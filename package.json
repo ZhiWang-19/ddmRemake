@@ -1,0 +1,36 @@
+{
+  "name": "ddm website",
+  "version": "0.0.1",
+  "type": "module",
+  "devDependencies": {
+    "@iconify/json": "^2.2.76",
+    "@mdx-js/rollup": "^2.3.0",
+    "@unocss/preset-icons": "^0.53.1",
+    "@unocss/transformer-directives": "^0.53.1",
+    "mdx": "^0.2.3",
+    "rehype-highlight": "^6.0.0",
+    "solid-start-node": "^0.2.26",
+    "solid-start-static": "^0.2.26",
+    "unocss": "^0.53.1",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "@docsearch/css": "^3.5.0",
+    "@docsearch/js": "3",
+    "@solidjs/meta": "^0.28.5",
+    "@solidjs/router": "^0.8.2",
+    "ag-grid-solid": "^30.0.6",
+    "solid-js": "^1.7.6",
+    "solid-mdx": "^0.0.6",
+    "solid-start": "^0.2.26",
+    "undici": "^5.22.1"
+  },
+  "scripts": {
+    "start": "solid-start start",
+    "dev": "solid-start dev",
+    "build": "solid-start build && mv dist _dist && mv _dist/public dist && rm -rf _dist && cp -r CNAME dist && node ./src/gen_sitemap.js"
+  },
+  "engines": {
+    "node": ">=16.8"
+  }
+}

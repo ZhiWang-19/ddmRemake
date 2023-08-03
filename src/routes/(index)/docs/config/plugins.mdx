@@ -1,0 +1,75 @@
+## Overview
+
+NvChad uses [lazy.nvim](https://github.com/folke/lazy.nvim) for plugins management. Basically, NvChad expects a user plugin table, which then gets merged with the default plugins table. You can find the default table in: [`lua/plugins/init.lua`](https://github.com/NvChad/NvChad/blob/v2.0/lua/plugins/init.lua).
+
+## Lazy loading
+
+We lazy load almost 95% of the plugins, so we expect and recommend you to lazy load the plugins as well, as its efficient in reducing startuptime.
+
+- We don't want users making NvChad slow just because they didn't lazy load plugins they've added.
+- Please read the [lazy.nvim plugin specs](https://github.com/folke/lazy.nvim#-plugin-spec) docs to know what options are available for lazyloading etc.
+- Try your best to lazy-load a plugin!
+
+## Manage custom plugins
+
+All NvChad default plugins will have `lazy = true` set. Therefore, if you want a plugin to be enabled on startup, change it to `lazy = false`.
+
+It is recommended that you avoid saving any files in the `custom/plugins/*` directory.
+
+> Our system utilizes the import feature provided by`lazy.nvim`, which imports all files in a directory and expects each file to return plugin tables. This behavior is undesirable for our purposes, so it is recommendeed to create a single file named **custom/plugins.lua**. This file will be imported by `lazy.nvim`, and no other files in the directory will be processed.
+
+<br/>
+- **custom/chadrc.lua**
+```lua
+M.plugins = "custom.plugins"
+```
+
+<br/>
+- **custom/plugins.lua**
+```lua
+local plugins = {
+
+  { "elkowar/yuck.vim" , lazy = false },  -- load a plugin at startup
+
+  -- You can use any plugin specification from lazy.nvim
+  {
+    "Pocco81/TrueZen.nvim",
+    cmd = { "TZAtaraxis", "TZMinimalist" },
+    config = function()
+      require "custom.configs.truezen" -- just an example path
+    end,
+  },
+
+  -- this opts will extend the default opts 
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {"html", "css", "bash"},
+    },
+  },
+
+  -- if you load some function or module within your opt, wrap it with a function
+  {
+   "nvim-telescope/telescope.nvim",
+   opts = {
+     defaults = {
+       mappings = {
+         i = {
+           ["<esc>"] = function(...)
+               require("telescope.actions").close(...)
+            end,
+          },
+        },
+      },
+    },
+   },
+
+   {
+     "folke/which-key.nvim",
+     enabled = false,
+   }
+
+}
+
+return plugins
+```

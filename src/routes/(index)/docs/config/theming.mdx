@@ -1,0 +1,96 @@
+## Override default highlight groups
+
+- Make sure you use a valid highlight group.
+- Check your theme colors in the [base46 theme dir](https://github.com/NvChad/base46/tree/v2.0/lua/base46/themes)
+- To know which highlight groups are available, check the [base46 integrations dir](https://github.com/NvChad/base46/tree/v2.0/lua/base46/integrations)
+- Also if you just press tab key in hl_override, a list of highlight groups will show up via the completion menu.
+
+When modifying the custom highlight groups in your theme file, such as "onedark.lua", it is important to note that only the variables from "base_30" can be used for this purpose. 
+
+Although hex colors can also be used in the "fg/bg" field, it is recommended to utilize the variable names (e.g. "blue", "darker_black", "one_bg", etc.) from your theme file as they will provide a better aesthetic. This way, there is no need to manually write the hex colors.
+
+```lua
+M.ui = {
+   hl_override = {
+      Pmenu = { bg = "white" },
+      -- Pmenu = { bg = "#ffffff" }, this works too
+        
+      -- if you want to lighten or darken color
+      -- this will use the black colorf rom nvchad theme & lighten it by 2x
+      -- use a negative number to darken it
+      Normal = {
+        bg = {"black", 2}
+      },
+
+      MyHighlightGroup = { -- custom highlights are also allowed
+         fg = "red",
+         bg = "darker_black"
+      }
+   },
+}
+```
+<br/>
+
+In order to add custom highlights, its the same as above, just use **`hl_add`**.
+
+## Customize themes
+
+If you just want to customize an already existing theme, you can change the following configuration:
+
+```lua
+M.ui = {
+   changed_themes = {
+      onedark = {
+         base_16 = {
+            base00 = "#mycol",
+         },
+         base_30 = {
+            red = "#mycol",
+            white = "#mycol",
+         },
+      },
+
+      nord = {
+         -- and so on!
+      },
+   },
+}
+```
+
+### Local themes
+
+> <u>WARNING: Do this at your own risk because you might not be able to make nice nvchad themes like siduck.</u>
+
+- Default themes can be found in our [`base46`](https://github.com/NvChad/base46) repository.
+
+Here is the default structure for NvChad themes:
+
+```lua
+-- place the file in /custom/themes/<theme-name>.lua
+-- for example: custom/themes/siduck.lua
+
+local M = {}
+
+M.base_30 = {
+   -- 30 colors based on base_16
+}
+
+M.base_16 = {
+   -- base16 colors
+}
+
+M.type = "dark" -- light / dark
+
+return M
+```
+
+<br/>
+
+Finally, add your theme in chadrc. 
+
+```lua
+M.ui = {
+   theme = "siduck",
+}
+```
+
