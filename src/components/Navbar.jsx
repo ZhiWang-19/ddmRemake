@@ -17,7 +17,7 @@ function Links() {
         class="vertCentered !gap-3 font-bold text-grey-4 dark:text-white-2"
       >
         <img src="/logo.svg" alt="nvchad logo" w="26px" h="26px" />
-        NvChad
+        Home
       </A>
 
       {/* route links */}
@@ -27,10 +27,10 @@ function Links() {
           linksShown() ? "" : "hidden"
         }`}
       >
-        <A href="/docs/quickstart/install">Docs</A>
-        <A href="/docs/features">Features</A>
-        <A href="/themes">Themes</A>
-        <A href="/news">News</A>
+        <A href="/docs/quickstart/install">About</A>
+        <A href="/themes">Tips</A>
+        <A href="/docs/features">Assignment</A>
+        <A href="/news">Links</A>
       </div>
     </div>
   );
@@ -85,12 +85,12 @@ export const ThemeToggleBtn = (props) => {
 
 export function BtnLinks() {
   const Btns = [
-    [
-      "i-ph:chat-teardrop-text text-3xl",
-      "#community",
-      "nvchad discussions",
-    ],
-    ["i-bi:github  ", "https://github.com/NvChad/NvChad", "Github repo"],
+    // [
+    //   "i-ph:chat-teardrop-text text-3xl",
+    //   "#schedule",
+    //   "nvchad discussions",
+    // ],
+    // ["i-bi:github  ", "https://github.com/NvChad/NvChad", "Github repo"],
   ];
 
   return (

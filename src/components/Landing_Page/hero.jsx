@@ -7,7 +7,7 @@ function BtnLinks() {
   return (
     <div class="mx-auto flex gap-3 text-sm md:text-lg text-white-2 [&_a]:shadow-xl">
       <A href="/docs/quickstart/2023-schedule" class={linkStyles}>
-        <div class="i-grommet-icons-install-option"></div> 2023Fall Schedule 
+        <div class="i-grommet-icons-install-option"></div> 2023 Schedule 
       </A>
 
       {/* <A */}
@@ -26,16 +26,16 @@ function BtnLinks() {
 
 function HeroText() {
   return (
-    <div text-slate-8 grid text-center mx-auto mb-10>
+    <div text-slate-8 grid text-center mx-auto mb-5>
       <h1 mb-0>
         Bring digital approches to your design workflow.
       </h1>
 
       <p font-medium text-base md:text-xl>
-        The official website for ::061-0113-00L:: <b>Digital Design Methods I</b>.
+        The official website for <b> ::061-0113-00L::Digital Design Methods I</b>.
       </p>
 
-      <BtnLinks />
+      {/* <BtnLinks /> */}
     </div>
   );
 }
@@ -54,7 +54,7 @@ function Hero() {
         <div>
           {/* banner img */}
           <img
-            src="/banner.webp"
+            src="/banner.png"
             alt="ddm screenshot"
             class="rounded-lg md:rounded-xl max-w-[90vw] 2xl:max-w-[1700px] softshadow m-auto"
           />
