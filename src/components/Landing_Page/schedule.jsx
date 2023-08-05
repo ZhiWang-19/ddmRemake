@@ -8,21 +8,31 @@ import 'ag-grid-community/styles/ag-theme-material.css';
 
 import "~/css/table.css"
 
+import scheduleData from '../../schedule.json'
 
-export async function loadJson(query) {
 
-  const response = await fetch("src/schedule.json");
-  const res = await response.json();
-  const curYr = res[query];
-
-  // console.log(curYr);
-  return curYr;
-}
+// export async function loadJson(query) {
+//
+//   const response = await fetch("src/schedule.json");
+//   const res = await response.json();
+//   const curYr = res[query];
+//
+//   // console.log(curYr);
+//   return curYr;
+// }
 
 function Schedule() {
+  // const [rowData] = createResource(2023, loadJson);
+  // console.log(scheduleData);
 
-  // todo: craete multiple entry in the schedule.json for different years
-  const [rowData] = createResource(2023, loadJson);
+  // determine the current year and if it is Fall semester
+  let curYr = new Date().getFullYear();
+  const curMonth = new Date().getMonth();
+
+  if (curMonth <= 6)
+    curYr = curYr - 1;
+
+  // console.log(curYr);
 
   const columnDefs = [
     { headerName: "Week", field: 'week' },
@@ -30,6 +40,10 @@ function Schedule() {
     { headerName: "Topic", field: 'topic' },
   ];
 
+  const rowData = scheduleData[curYr];
+
+
+  // ag-grid styles
   const defaultColDef = {
     flex: 1,
     editable: false,
@@ -40,6 +54,7 @@ function Schedule() {
   const gridOptions = {
     suppressCellFocus: true
   }
+
 
   // todo: add auto selection of the current week
   return (
@@ -52,18 +67,18 @@ function Schedule() {
       </div>
 
       <Show
-        when={rowData()}
+        when={rowData}
         fallback={
-          <h2>schedule not loaded successfully...</h2>
+          <h3>schedule not loaded successfully...</h3>
         }
       >
         <div dark class="ag-theme-material ag-grid">
           <AgGridSolid
-            gridOptions = {gridOptions}
-            columnDefs={columnDefs}
-            defaultColDef={defaultColDef}
-            rowSelection={'single'}
-            rowData={rowData()}
+          gridOptions = {gridOptions}
+          columnDefs = {columnDefs}
+          defaultColDef = {defaultColDef}
+          rowSelection = {'single'}
+          rowData = {rowData}
           />
         </div>
       </Show>
