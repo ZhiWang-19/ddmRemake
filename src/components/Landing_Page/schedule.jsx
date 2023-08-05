@@ -54,7 +54,7 @@ function Schedule() {
       <Show
         when={rowData()}
         fallback={
-          <h1>loading schedule...</h1>
+          <h2>schedule not loaded successfully...</h2>
         }
       >
         <div dark class="ag-theme-material ag-grid">
