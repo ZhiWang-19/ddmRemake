@@ -1,4 +1,4 @@
-import {Component} from 'solid-js';
+import {Component, For, createResource} from 'solid-js';
 import { A } from "@solidjs/router";
 
 import  AgGridSolid  from "ag-grid-solid";
@@ -6,30 +6,43 @@ import  AgGridSolid  from "ag-grid-solid";
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
 
+import "~/css/table.css"
+
+
+export async function loadJson(query) {
+
+  const response = await fetch("src/schedule.json");
+  const res = await response.json();
+  const curYr = res[query];
+
+  // console.log(curYr);
+  return curYr;
+}
 
 function Schedule() {
 
-  const tableStyles = "vertCentered bg-onedark w-fit p-3 px-4 rounded-full agGrid";
-  const tableSty = "table-auto agGrid";
+
+  // todo: craete multiple entry in the schedule.json for different years
+  const [rowData] = createResource(2023, loadJson);
 
   const columnDefs = [
-    { field: 'Week' },
-    { field: 'Date' },
-    { field: 'Topic' },
-  ];
-
-  const rowData = [
-    { Week: '1', Date: '01/09', Topic: "Introduction" },
-    { Week: '2', Date: '02/09', Topic: "Rhino + GH Intro"},
-    { Week: '3', Date: '03/09', Topic: "GH Intro 2"},
+    { headerName: "Week", field: 'week' },
+    { headerName: "Date", field: 'date' },
+    { headerName: "Topic", field: 'topic' },
   ];
 
   const defaultColDef = {
     flex: 1,
     editable: false,
-    // selectable: false,
+    // suppressNavigable: true,
+    // cellClass: 'no-border'
   };
 
+  const gridOptions = {
+    suppressCellFocus: true
+  }
+
+  // todo: add auto selection of the current week
   return (
     <>
 
@@ -39,11 +52,13 @@ function Schedule() {
         </h2>
       </div>
 
-      <div class="ag-theme-material agGrid">
+      <div dark class="ag-theme-material ag-grid">
         <AgGridSolid
+          gridOptions = {gridOptions}
           columnDefs={columnDefs}
-          rowData={rowData}
           defaultColDef={defaultColDef}
+          rowSelection={'single'}
+          rowData={rowData()}
         />
       </div>
     </>

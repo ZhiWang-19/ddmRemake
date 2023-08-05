@@ -1,0 +1,34 @@
+/* ag-grid settings */
+.ag-grid {
+  margin: auto;
+  height: 300px;
+  width: 70%;
+
+}
+
+.ag-header-cell{
+  font-size: 150%;
+}
+
+/* change the font style of a single UI component */
+.ag-header-cell-label {
+  /* font-style: italic; */
+  justify-content: center;
+}
+.ag-cell {
+  display: flex;
+  justify-content: center;
+}
+
+
+.dark .ag-theme-material {
+--ag-header-background-color: dark-1;
+--ag-header-foreground-color: text-white-2;
+--ag-background-color: dark-1;
+--ag-foreground-color: text-white-2;
+
+--ag-header-cell-hover-background-color: dark-1;
+--ag-row-hover-color: dark-1;
+--ag-selected-row-background-color: #000000;
+--ag-border-color: #3a3a3a;
+}
