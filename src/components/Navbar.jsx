@@ -27,10 +27,8 @@ function Links() {
           linksShown() ? "" : "hidden"
         }`}
       >
-        <A href="/docs/quickstart/install">About</A>
-        <A href="/themes">Tips</A>
-        <A href="/docs/features">Assignment</A>
-        <A href="/news">Links</A>
+        <A href="/docs/credits">About</A>
+        <A href="/news">News</A>
       </div>
     </div>
   );
@@ -103,7 +101,7 @@ export function BtnLinks() {
 
       <div hidden id="docsearch"></div>
 
-      <DocsBtn />
+      {/* <DocsBtn /> */}
       <Searchbar />
 
       {Btns.map((x) => (

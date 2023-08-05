@@ -21,7 +21,6 @@ export async function loadJson(query) {
 
 function Schedule() {
 
-
   // todo: craete multiple entry in the schedule.json for different years
   const [rowData] = createResource(2023, loadJson);
 
@@ -52,15 +51,23 @@ function Schedule() {
         </h2>
       </div>
 
-      <div dark class="ag-theme-material ag-grid">
-        <AgGridSolid
-          gridOptions = {gridOptions}
-          columnDefs={columnDefs}
-          defaultColDef={defaultColDef}
-          rowSelection={'single'}
-          rowData={rowData()}
-        />
-      </div>
+      <Show
+        when={rowData()}
+        fallback={
+          <h1>loading schedule...</h1>
+        }
+      >
+        <div dark class="ag-theme-material ag-grid">
+          <AgGridSolid
+            gridOptions = {gridOptions}
+            columnDefs={columnDefs}
+            defaultColDef={defaultColDef}
+            rowSelection={'single'}
+            rowData={rowData()}
+          />
+        </div>
+      </Show>
+
     </>
   );
 }
