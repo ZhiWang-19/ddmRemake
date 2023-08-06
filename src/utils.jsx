@@ -12,6 +12,17 @@ function isElementVisible(myElement) {
   return (isVisible) ? true : false;
 }
 
+export function dateDistance(d1, d2) {
+  let date1 = new Date(d1).getTime();
+  let date2 = new Date(d2).getTime();
+
+  const diffTime = date1 - date2;
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  return diffDays;
+  // return date1 <= date2;
+}
+
 export const [activeContext_Heading, setActiveContext_Heading] = createSignal(
   "",
 );
@@ -53,3 +64,4 @@ export const autoscroll_toID = () => {
     document.getElementById(id).scrollIntoView();
   }
 };
+

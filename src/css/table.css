@@ -1,8 +1,7 @@
 /* ag-grid settings */
 .ag-grid {
   margin: auto;
-  height: 300px;
-  width: 70%;
+  width: 60%;
 
 }
 
@@ -17,18 +16,30 @@
 }
 .ag-cell {
   display: flex;
+}
+
+.ag-grid-center {
+  /* text-align: center; */
   justify-content: center;
 }
 
 
 .dark .ag-theme-material {
---ag-header-background-color: dark-1;
---ag-header-foreground-color: text-white-2;
---ag-background-color: dark-1;
---ag-foreground-color: text-white-2;
+  --ag-header-background-color: dark-1;
+  --ag-header-foreground-color: text-white-2;
+  --ag-background-color: dark-1;
+  --ag-foreground-color: text-white-2;
 
---ag-header-cell-hover-background-color: dark-1;
---ag-row-hover-color: dark-1;
---ag-selected-row-background-color: #000000;
---ag-border-color: #3a3a3a;
+  --ag-header-cell-hover-background-color: dark-1;
+  --ag-row-hover-color: dark-1;
+  --ag-selected-row-background-color: #000;
+  --ag-border-color: #3a3a3a;
+}
+
+.current-week {
+  background-color: #eee;
+}
+
+.dark .current-week {
+  background-color: #000;
 }

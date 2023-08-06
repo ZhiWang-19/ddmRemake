@@ -1,19 +1,53 @@
 {
   "2023":[
     {
-      "week": "10",
-      "date": "02 / 09",
-      "topic": "Intro to DDM"
+      "class": "01",
+      "date": "2023-09-19",
+      "topic": "Kickoff Session, Course Introduction"
     },
     {
-      "week": "11",
-      "date": "19 / 09",
-      "topic": "Intro to DDM2"
+      "class": "02",
+      "date": "2023-09-26",
+      "topic": "Grasshopper Essentials and BAL Intro"
     },
     {
-      "week": "12",
-      "date": "19 / 19",
-      "topic": "Intro to DDM3"
+      "class": "03",
+      "date": "2023-10-03",
+      "topic": "Rhino Basic Modelling"
+    },
+    { "class": "04",
+      "date": "2023-10-10",
+      "topic": "NURBS Intro, Rhino Advanced"
+    },
+    {
+      "class": "05",
+      "date": "2023-10-17",
+      "topic": "Grasshopper Data Structure"
+    },
+    {
+      "class": "06",
+      "date": "2023-10-31",
+      "topic": "GIS Intro (Final Project Release)"
+    },
+    {
+      "class": "07",
+      "date": "2023-11-07",
+      "topic": "QGIS Advanced, Integrated Workflow"
+    },
+    {
+      "class": "08",
+      "date": "2023-11-21",
+      "topic": "Data Representation"
+    },
+    {
+      "class": "09",
+      "date": "2023-11-28",
+      "topic": "Various Topics on Digital Design"
+    },
+    {
+      "class": "10",
+      "date": "2023-11-30",
+      "topic": "Project Final Review"
     }
   ]
 }

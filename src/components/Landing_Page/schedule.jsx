@@ -1,7 +1,8 @@
-import {Component, For, createResource} from 'solid-js';
+import {Component, For, createResource, createMemo} from 'solid-js';
 import { A } from "@solidjs/router";
 
 import  AgGridSolid  from "ag-grid-solid";
+import {dateDistance} from "~/utils"
 
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
@@ -26,22 +27,33 @@ function Schedule() {
   // console.log(scheduleData);
 
   // determine the current year and if it is Fall semester
-  let curYr = new Date().getFullYear();
-  const curMonth = new Date().getMonth();
+  let curT = new Date();
+  let curY = curT.getFullYear();
+  let curM = curT.getMonth() + 1;
+  let curD = curT.getDate();
+  let curFullDate= curY + "-" + curM + "-" + curD;
 
-  if (curMonth <= 6)
-    curYr = curYr - 1;
-
-  // console.log(curYr);
+  if (curM <= 6)
+  curY = curY - 1;
 
   const columnDefs = [
-    { headerName: "Week", field: 'week' },
-    { headerName: "Date", field: 'date' },
-    { headerName: "Topic", field: 'topic' },
+    { headerName: "Class", 
+      field: 'class',
+      flex: 1,
+      cellClass: 'ag-grid-center' 
+    },
+    { headerName: "Date", 
+      field: 'date', 
+      flex: 1,
+      cellClass: 'ag-grid-center'
+    },
+    { headerName: "Topic", 
+      field: 'topic', 
+      flex: 2,
+    },
   ];
 
-  const rowData = scheduleData[curYr];
-
+  const rowData = scheduleData[curY];
 
   // ag-grid styles
   const defaultColDef = {
@@ -51,8 +63,35 @@ function Schedule() {
     // cellClass: 'no-border'
   };
 
+
   const gridOptions = {
-    suppressCellFocus: true
+    domLayout: 'autoHeight',
+    columnDefs: columnDefs,
+    suppressCellFocus: true,
+    defaultColDef: {
+      flex: 1,
+      editable: false,
+      // suppressNavigable: true,
+      // cellClass: 'no-border'
+    },
+
+    rowSelection: 'single',
+    rowData: rowData,
+    rowClassRules: {
+      'current-week': (params) => {
+        // curFullDate = "2023-09-29";
+        let weekDiff = Math.ceil(dateDistance(params.data.date, curFullDate) / 7);
+
+        // conditional return
+        if (weekDiff < 0)
+        return Number(params.data.class) === 10;
+        if (weekDiff > 7)
+        return Number(params.data.class) === 1;
+
+        return weekDiff === 0;
+
+      },
+    }
   }
 
 
@@ -60,10 +99,11 @@ function Schedule() {
   return (
     <>
 
-      <div text-slate-8 grid text-center mx-auto mb-10 py-4 dark:text-white-2>
+      <div text-slate-8 grid text-center mx-auto mb-2 py-4 dark:text-white-2>
         <h2 mb-0>
           2023 Fall Schedule
         </h2>
+        <h3>12:45 - 15:30, Tue</h3>
       </div>
 
       <Show
@@ -72,13 +112,10 @@ function Schedule() {
           <h3>schedule not loaded successfully...</h3>
         }
       >
-        <div dark class="ag-theme-material ag-grid">
+        <div dark pb-10 class="ag-theme-material ag-grid">
           <AgGridSolid
-          gridOptions = {gridOptions}
-          columnDefs = {columnDefs}
-          defaultColDef = {defaultColDef}
-          rowSelection = {'single'}
-          rowData = {rowData}
+            gridOptions = {gridOptions}
+            rowSelection = {'single'}
           />
         </div>
       </Show>
