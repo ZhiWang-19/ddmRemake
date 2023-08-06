@@ -67,15 +67,16 @@ function Schedule() {
   const gridOptions = {
     domLayout: 'autoHeight',
     columnDefs: columnDefs,
-    suppressCellFocus: true,
-    defaultColDef: {
-      flex: 1,
-      editable: false,
-      // suppressNavigable: true,
-      // cellClass: 'no-border'
-    },
+    // defaultColDef: {
+    //   flex: 1,
+    //   editable: false,
+    //   // suppressNavigable: true,
+    //   // cellClass: 'no-border'
+    // },
 
-    rowSelection: 'single',
+    suppressCellFocus: true,
+    suppressRowClickSelection: true,
+    // rowSelection: 'single',
     rowData: rowData,
     rowClassRules: {
       'current-week': (params) => {

@@ -3,6 +3,8 @@
   margin: auto;
   width: 60%;
 
+  --ag-header-cell-hover-background-color: --ag-background-color;
+  --ag-row-hover-color: --ag-background-color;
 }
 
 .ag-header-cell{
