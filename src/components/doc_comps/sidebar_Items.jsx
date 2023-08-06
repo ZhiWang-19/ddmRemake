@@ -20,7 +20,8 @@ const sidebar_Items = [
   // ["Api Functions", "api", "i-mdi:atom-variant"],
   // ["Debug config", "debugging-config", "i-ri-bug-line"],
   // ["Contributing", "contribute", "i-mdi-github"],
-  ["Credits", "credits", "i-line-md:heart"],
+  ["About", "about", "i-line-md:heart"],
+  // ["Credit", "credits", "i-line-md:heart"],
 ];
 
 export default sidebar_Items;
