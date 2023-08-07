@@ -104,7 +104,7 @@ function Schedule() {
         <h2 mb-0>
           2023 Fall Schedule
         </h2>
-        <h4>Tuesday, 12:45 - 15:30 <br /> (exception: Final Review)</h4>
+        <h4>Tuesday, 12:45 - 15:30</h4>
       </div>
 
       <Show
