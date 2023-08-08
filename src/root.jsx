@@ -24,7 +24,7 @@ export default function Root() {
           content="The official website for 061-0113-00L  Digital Design Methods I."
         />
         {/* favicon & font */}
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

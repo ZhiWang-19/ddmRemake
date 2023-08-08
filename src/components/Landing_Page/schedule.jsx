@@ -1,16 +1,15 @@
-import {Component, For, createResource, createMemo} from 'solid-js';
+import { Component, createMemo, createResource, For } from "solid-js";
 import { A } from "@solidjs/router";
 
-import  AgGridSolid  from "ag-grid-solid";
-import {dateDistance} from "~/utils"
+import AgGridSolid from "ag-grid-solid";
+import { dateDistance } from "~/utils";
 
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-material.css';
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-material.css";
 
-import "~/css/table.css"
+import "~/css/table.css";
 
-import scheduleData from '../../schedule.json'
-
+import scheduleData from "../../schedule.json";
 
 // export async function loadJson(query) {
 //
@@ -31,26 +30,21 @@ function Schedule() {
   let curY = curT.getFullYear();
   let curM = curT.getMonth() + 1;
   let curD = curT.getDate();
-  let curFullDate= curY + "-" + curM + "-" + curD;
+  let curFullDate = curY + "-" + curM + "-" + curD;
 
-  if (curM <= 6)
-  curY = curY - 1;
+  if (curM <= 6) {
+    curY = curY - 1;
+  }
 
   const columnDefs = [
-    { headerName: "Class", 
-      field: 'class',
+    {
+      headerName: "Class",
+      field: "class",
       flex: 1,
-      cellClass: 'ag-grid-center' 
+      cellClass: "ag-grid-center",
     },
-    { headerName: "Date", 
-      field: 'date', 
-      flex: 1,
-      cellClass: 'ag-grid-center'
-    },
-    { headerName: "Topic", 
-      field: 'topic', 
-      flex: 2,
-    },
+    { headerName: "Date", field: "date", flex: 1, cellClass: "ag-grid-center" },
+    { headerName: "Topic", field: "topic", flex: 2 },
   ];
 
   const rowData = scheduleData[curY];
@@ -63,9 +57,8 @@ function Schedule() {
     // cellClass: 'no-border'
   };
 
-
   const gridOptions = {
-    domLayout: 'autoHeight',
+    domLayout: "autoHeight",
     columnDefs: columnDefs,
     // defaultColDef: {
     //   flex: 1,
@@ -79,51 +72,52 @@ function Schedule() {
     // rowSelection: 'single',
     rowData: rowData,
     rowClassRules: {
-      'current-week': (params) => {
+      "current-week": (params) => {
         // curFullDate = "2023-09-29";
-        let weekDiff = Math.ceil(dateDistance(params.data.date, curFullDate) / 7);
+        let weekDiff = Math.ceil(
+          dateDistance(params.data.date, curFullDate) / 7,
+        );
 
         // conditional return
-        if (weekDiff < 0)
-        return Number(params.data.class) === 10;
-        if (weekDiff > 7)
-        return Number(params.data.class) === 1;
+        if (weekDiff < 0) {
+          return Number(params.data.class) === 10;
+        }
+        if (weekDiff > 7) {
+          return Number(params.data.class) === 1;
+        }
 
         return weekDiff === 0;
-
       },
-    }
-  }
-
+    },
+  };
 
   // todo: add auto selection of the current week
   return (
     <>
-
       <div text-slate-8 grid text-center mx-auto mb-2 py-4 dark:text-white-2>
         <h2 mb-0>
           2023 Fall Schedule
         </h2>
-        <h4>Tuesday, 12:45 - 15:30</h4>
+        <h4>
+          Time: &nbsp 12:45 - 15:30 
+          <br />
+          &nbsp Location: &nbsp LVML (HIL H 40.8)
+        </h4>
       </div>
 
       <Show
         when={rowData}
-        fallback={
-          <h3>schedule not loaded successfully...</h3>
-        }
+        fallback={<h3>schedule not loaded successfully...</h3>}
       >
         <div dark pb-10 class="ag-theme-material ag-grid">
           <AgGridSolid
-            gridOptions = {gridOptions}
-            rowSelection = {'single'}
+            gridOptions={gridOptions}
+            rowSelection={"single"}
           />
         </div>
       </Show>
-
     </>
   );
 }
 
 export default Schedule;
-
