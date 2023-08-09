@@ -5,7 +5,7 @@ import rehypeHighlight from "rehype-highlight";
 import solid from "solid-start/vite";
 
 import unocssPlugin from "unocss/vite"
-// import remarkGfm from 'remark-gfm';
+import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
   plugins: [
@@ -27,7 +27,7 @@ export default defineConfig({
             jsxImportSource: "solid-js",
             jsx: true,
             providerImportSource: "solid-mdx",
-            rehypePlugins: [rehypeHighlight],
+            rehypePlugins: [rehypeHighlight, remarkGfm],
           })
 //
       ),

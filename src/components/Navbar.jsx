@@ -27,9 +27,10 @@ function Links() {
           linksShown() ? "" : "hidden"
         }`}
       >
-        <A href="/docs/about">About</A>
         <A href="/docs/tutorial">Tutorial</A>
-        <A href="/news">News</A>
+        <A href="/news">Assignment</A>
+        <A href="/docs/resources">Resource</A>
+        <A href="/docs/about">About</A>
       </div>
     </div>
   );

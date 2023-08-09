@@ -9,6 +9,7 @@
     "@unocss/transformer-directives": "^0.53.1",
     "mdx": "^0.2.3",
     "rehype-highlight": "^6.0.0",
+    "remark-gfm": "^3.0.1",
     "solid-start-node": "^0.2.26",
     "solid-start-static": "^0.2.26",
     "unocss": "^0.53.6",

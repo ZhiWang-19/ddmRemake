@@ -1,4 +1,6 @@
-## Server Access
+## ETH Server Access
+
+### Important Links
 
 The address to the LUS MSCLA Student Server is:  **\\\nas22.ethz.ch\arch_lus_mscla_student**  
 
@@ -8,7 +10,10 @@ The ISG D-Arch host a variety of servers:
 - Group server staff members and students D-ARCH: **\\\nas22.ethz.ch**
 - Software Shop (contains ETH-purchased educational-free softare): [ETH IT-Shop](https://itshop.ethz.ch/)
 
-**Note**: *Addresses start with* "\\\\" *should be opened in File Explorer and not accessable by web browser*.
+**Note**: 
+1. *Addresses start with* "\\\\" *should be opened in File Explorer and not accessable by web browser*.
+
+1. *For some ETH Servers, access outside ETH network will require an extablished VPN connection.*
 
 ---
 
