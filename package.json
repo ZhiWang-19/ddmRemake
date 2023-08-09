@@ -11,7 +11,7 @@
     "rehype-highlight": "^6.0.0",
     "solid-start-node": "^0.2.26",
     "solid-start-static": "^0.2.26",
-    "unocss": "^0.53.1",
+    "unocss": "^0.53.6",
     "vite": "^4.3.9"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "@solidjs/router": "^0.8.2",
     "ag-grid-solid": "^30.0.6",
     "solid-js": "^1.7.6",
+    "solid-jsx": "^1.1.4",
     "solid-mdx": "^0.0.6",
     "solid-start": "^0.2.26",
     "undici": "^5.22.1"

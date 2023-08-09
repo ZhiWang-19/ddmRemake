@@ -4,21 +4,38 @@ import mdx from "@mdx-js/rollup";
 import rehypeHighlight from "rehype-highlight";
 import solid from "solid-start/vite";
 
+import unocssPlugin from "unocss/vite"
+// import remarkGfm from 'remark-gfm';
+
 export default defineConfig({
   plugins: [
+    // mdx({
+    //   jsxImportSource: "solid-js",
+    //   providerImportSource: "solid-mdx",
+    // }),
+
+    // mdx({
+    //   jsxImportSource: "solid-js",
+    //   jsx: true,
+    //   providerImportSource: "solid-mdx",
+    // }),
+    unocssPlugin(),
     unocss(),
     {
-      ...(await mdx({
-        jsxImportSource: "solid-js",
-        jsx: true,
-        providerImportSource: "/node_modules/solid-mdx",
-        rehypePlugins: [rehypeHighlight],
-      })),
+      ...(
+          mdx({
+            jsxImportSource: "solid-js",
+            jsx: true,
+            providerImportSource: "solid-mdx",
+            rehypePlugins: [rehypeHighlight],
+          })
+//
+      ),
       enforce: "pre",
     },
     solid({
       adapter: (await import("solid-start-static")).default(),
-      extensions: [".mdx"],
+      extensions: [".mdx", ".md"],
       ssr: false,
     }),
   ],

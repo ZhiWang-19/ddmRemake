@@ -28,6 +28,7 @@ function Links() {
         }`}
       >
         <A href="/docs/about">About</A>
+        <A href="/docs/tutorial">Tutorial</A>
         <A href="/news">News</A>
       </div>
     </div>
