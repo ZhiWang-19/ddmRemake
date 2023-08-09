@@ -1,4 +1,4 @@
-## Server access
+## Server Access
 
 The address to the LUS MSCLA Student Server is:  **\\\nas22.ethz.ch\arch_lus_mscla_student**  
 
