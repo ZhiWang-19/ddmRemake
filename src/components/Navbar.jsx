@@ -29,8 +29,8 @@ function Links() {
       >
         <A href="/docs/tutorials/_essential">Tutorial</A>
         <A href="/docs/resources">Resource</A>
-        <A href="/docs/about">About</A>
         <A href="/news">Assignment</A>
+        <A href="/docs/about">About</A>
       </div>
     </div>
   );
