@@ -27,10 +27,10 @@ function Links() {
           linksShown() ? "" : "hidden"
         }`}
       >
-        <A href="/docs/tutorial">Tutorial</A>
-        <A href="/news">Assignment</A>
+        <A href="/docs/tutorials/_essential">Tutorial</A>
         <A href="/docs/resources">Resource</A>
         <A href="/docs/about">About</A>
+        <A href="/news">Assignment</A>
       </div>
     </div>
   );
