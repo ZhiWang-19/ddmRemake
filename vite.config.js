@@ -14,11 +14,6 @@ export default defineConfig({
     //   providerImportSource: "solid-mdx",
     // }),
 
-    // mdx({
-    //   jsxImportSource: "solid-js",
-    //   jsx: true,
-    //   providerImportSource: "solid-mdx",
-    // }),
     unocssPlugin(),
     unocss(),
     {

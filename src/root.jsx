@@ -15,7 +15,10 @@ import {
 import "uno.css";
 import "~/css/style.css";
 
+
 export default function Root() {
+
+
   return (
     <Html lang="en">
       <Head>
