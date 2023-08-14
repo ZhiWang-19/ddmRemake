@@ -27,9 +27,9 @@ function Links() {
           linksShown() ? "" : "hidden"
         }`}
       >
-        <A href="/docs/tutorial">Tutorial</A>
+        <A href="/docs/tutorials/rhinoBasic">Tutorial</A>
+        <A href="/docs/resources/ethServer">Resource</A>
         <A href="/news">Assignment</A>
-        <A href="/docs/resources">Resource</A>
         <A href="/docs/about">About</A>
       </div>
     </div>

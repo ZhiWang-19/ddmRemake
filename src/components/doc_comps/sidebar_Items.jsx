@@ -1,23 +1,23 @@
 const sidebar_Items = [
-  // {
-  //   label: ["Quickstart", "i-mingcute:safe-flash-fill"],
-  //   items: [
-  //     ["Install", "quickstart/install"],
-  //     ["Post Install", "quickstart/post-install"],
-  //     ["Learn basic Lua", "quickstart/learn-lua"],
-  //   ],
-  // },
+  {
+    label: ["Tutorials", "i-mingcute:safe-flash-fill"],
+    items: [
+      ["Rhino Basics", "tutorials/rhinoBasic"],
+      ["Grasshopper Basics", "tutorials/ghBasic"],
+      ["QGIS Basics", "tutorials/qgisBasic"],
+    ],
+  },
 
-  // {
-  //   label: ["Custom config", "i-mdi-cog"],
-  //   items: [
-  //     ["Walkthrough", "config/walkthrough"],
-  //     ["Snippets", "config/snippets"],
-  //   ],
-  // },
+  {
+    label: ["Resources", "i-mdi-cog"],
+    items: [
+      ["ETH Server", "resources/ethServer"],
+      ["Miscellaneous", "resources/misc"],
+    ],
+  },
 
-  // ["Features", "features", "i-tabler:server-cog"],
-  // ["Api Functions", "api", "i-mdi:atom-variant"],
+  // ["Tutorials", "tutorial", "i-tabler:server-cog"],
+  ["Resource", "resources", "i-mdi:atom-variant"],
   // ["Debug config", "debugging-config", "i-ri-bug-line"],
   // ["Contributing", "contribute", "i-mdi-github"],
   ["About", "about", "i-line-md:heart"],
