@@ -1,28 +1,5 @@
 import { A } from "@solidjs/router";
 
-function BtnLinks() {
-  const linkStyles = "vertCentered bg-onedark w-fit p-3 px-4 rounded-full";
-
-  return (
-    <div class="mx-auto flex gap-3 text-sm md:text-lg text-white-2 [&_a]:shadow-xl">
-      <A href="/docs/quickstart/2023-schedule" class={linkStyles}>
-        <div class="i-grommet-icons-install-option"></div> 2023 Schedule 
-      </A>
-
-      {/* <A */}
-      {/*   href="/docs/quickstart/install" */}
-      {/*   class={linkStyles} */}
-      {/*   onclick={() => { */}
-      {/*     setOS("Docker"); */}
-      {/*     setOSCMD(docker_cmd); */}
-      {/*   }} */}
-      {/* > */}
-      {/*   <div class="i-mdi-docker"></div> Docker */}
-      {/* </A> */}
-    </div>
-  );
-}
-
 function HeroText() {
   return (
     <div text-slate-8 grid text-center mx-auto mb-5>
@@ -34,7 +11,6 @@ function HeroText() {
         The official website for <b> ::061-0113-00L::Digital Design Methods I</b>.
       </p>
 
-      {/* <BtnLinks /> */}
     </div>
   );
 }
