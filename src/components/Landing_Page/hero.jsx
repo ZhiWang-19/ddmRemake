@@ -1,5 +1,4 @@
 import { A } from "@solidjs/router";
-import { setOS, setOSCMD, docker_cmd } from "../docpage/install";
 
 function BtnLinks() {
   const linkStyles = "vertCentered bg-onedark w-fit p-3 px-4 rounded-full";
