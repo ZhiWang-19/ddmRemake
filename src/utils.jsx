@@ -1,5 +1,12 @@
 // import { createSignal } from "solid-js";
-import { createSignal, sharedConfig, createComponent, onMount, lazy} from "solid-js"
+import {
+  createComponent,
+  createMemo,
+  createSignal,
+  lazy,
+  onMount,
+  sharedConfig,
+} from "solid-js";
 import { createStore } from "solid-js/store";
 
 function isElementVisible(myElement) {
@@ -66,24 +73,23 @@ export const autoscroll_toID = () => {
   }
 };
 
-
 export function clientOnly(fn) {
-  const Lazy = lazy(fn)
-  return props => {
+  const Lazy = lazy(fn);
+  return (props) => {
     if (sharedConfig.context) {
-      const [flag, setFlag] = createSignal(false)
+      const [flag, setFlag] = createSignal(false);
 
       onMount(() => {
-        setFlag(true)
-      })
+        setFlag(true);
+      });
 
       return createMemo(() => {
         if (flag()) {
-          return createComponent(Lazy, props)
+          return createComponent(Lazy, props);
         }
-        return undefined
-      })
+        return undefined;
+      });
     }
-    return createComponent(Lazy, props)
-  }
+    return createComponent(Lazy, props);
+  };
 }

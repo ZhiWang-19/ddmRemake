@@ -1,4 +1,7 @@
 import { Component, createMemo, createResource, For } from "solid-js";
+import { createServerData$ } from "solid-start/server";
+import { createRouteData, useRouteData } from "solid-start";
+
 import { A } from "@solidjs/router";
 
 import AgGridSolid from "ag-grid-solid";
@@ -11,20 +14,36 @@ import "~/css/table.css";
 
 import scheduleData from "../../schedule.json";
 
-// export async function loadJson(query) {
-//
-//   const response = await fetch("src/schedule.json").then(m=>m.default);
-//   const res = await response.json();
-//   const curYr = res[query];
-//
-//   console.log(curYr);
-//   return curYr;
-// }
+export async function loadJson(query) {
+  const response = await fetch("/schedule.json").then((res) => res.json());
+
+  // // debug
+  // const curYr = response[query];
+  // console.log(curYr);
+
+  return response[query];
+}
+
+export function routeData() {
+  return createRouteData(async () => {
+    // const response = await fetch("/schedule.json");
+    const response = await fetch("/schedule.json");
+    return (await response.json());
+  });
+}
 
 function Schedule() {
-  // const [rowData] = createResource(2023, loadJson);
-  // console.log(rowData);
+  // const [rowD] = createResource(2023, loadJson);
+  // console.log(rowD);
+  // need ssr: false
+  // const response = fetch('/schedule.json').then(res=>res.json());
+  // console.log(response);
 
+  // const schedule = useRouteData(2023);
+  // console.log(schedule);
+  //
+  const schedule = import("../../schedule.json").then(m=>m.default);
+  console.log(schedule[2023]);
 
   // determine the current year and if it is Fall semester
   let curT = new Date();
@@ -100,7 +119,7 @@ function Schedule() {
           2023 Fall Schedule
         </h2>
         <h4>
-          Time: &nbsp 12:45 - 15:30 
+          Time: &nbsp 12:45 - 15:30
           <br />
           &nbsp Location: &nbsp LVML (HIL H 40.8)
         </h4>

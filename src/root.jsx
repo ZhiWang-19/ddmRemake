@@ -7,6 +7,7 @@ import {
   Head,
   Html,
   Meta,
+  Route,
   Routes,
   Scripts,
   Title,
@@ -14,6 +15,7 @@ import {
 
 import "uno.css";
 import "~/css/style.css";
+
 
 export default function Root() {
   return (
