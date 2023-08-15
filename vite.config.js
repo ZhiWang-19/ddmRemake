@@ -8,6 +8,10 @@ import unocssPlugin from "unocss/vite"
 import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
+  ssr: {
+    external: ['ag-grid-solid'],
+  },
+
   plugins: [
     // mdx({
     //   jsxImportSource: "solid-js",

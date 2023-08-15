@@ -1,4 +1,4 @@
-import { Component, createMemo, createResource, For } from "solid-js";
+import { Component, createResource, For } from "solid-js";
 import { A } from "@solidjs/router";
 
 import AgGridSolid from "ag-grid-solid";

@@ -5,9 +5,6 @@ const sidebar_Items = [
       ["Rhino Basics", "tutorials/rhinoBasic"],
       ["Grasshopper Basics", "tutorials/ghBasic"],
       ["QGIS Basics", "tutorials/qgisBasic"],
-    label: ["Tutorial", "i-mingcute:safe-flash-fill"],
-    items: [
-      ["Essential", "tutorials/_essential"],
       ["Mixed Reality", "tutorials/_xr"],
       ["Fabrication", "tutorials/_fab"],
     ],
