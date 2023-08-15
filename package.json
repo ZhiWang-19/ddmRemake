@@ -15,8 +15,8 @@
     "mdx": "^0.2.3",
     "rehype-highlight": "^6.0.0",
     "remark-gfm": "^3.0.1",
-    "solid-start-node": "^0.3.2",
-    "solid-start-static": "^0.3.2",
+    "solid-start-node": "^0.3.3",
+    "solid-start-static": "^0.3.3",
     "unocss": "^0.53.6",
     "vite": "^4.4.9"
   },
@@ -30,7 +30,7 @@
     "solid-js": "^1.7.11",
     "solid-jsx": "^1.1.4",
     "solid-mdx": "^0.0.6",
-    "solid-start": "^0.3.2",
+    "solid-start": "^0.3.3",
     "undici": "^5.23.0"
   },
   "engines": {
