@@ -1,5 +1,4 @@
-import { Component, createMemo, createResource, For } from "solid-js";
-import { createServerData$ } from "solid-start/server";
+import { Component, createResource, createSignal, For } from "solid-js";
 import { createRouteData, useRouteData } from "solid-start";
 
 import { A } from "@solidjs/router";
@@ -11,51 +10,35 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 
 import "~/css/table.css";
-
-import scheduleData from "../../schedule.json";
-
-export async function loadJson(query) {
-  const response = await fetch("/schedule.json").then((res) => res.json());
-
-  // // debug
-  // const curYr = response[query];
-  // console.log(curYr);
-
-  return response[query];
-}
+import { presetTypography } from "unocss";
 
 export function routeData() {
+  // const [scheduleData] = createResource(async () => {
+  //   const res = await fetch("/schedule.json");
+  //   return await res.json();
+  // });
+  //
+  // return { scheduleData };
+
   return createRouteData(async () => {
-    // const response = await fetch("/schedule.json");
     const response = await fetch("/schedule.json");
-    return (await response.json());
+    return await response.json();
   });
 }
 
-function Schedule() {
-  // const [rowD] = createResource(2023, loadJson);
-  // console.log(rowD);
-  // need ssr: false
-  // const response = fetch('/schedule.json').then(res=>res.json());
-  // console.log(response);
-
-  // const schedule = useRouteData(2023);
-  // console.log(schedule);
-  //
-  const schedule = import("../../schedule.json").then(m=>m.default);
-  console.log(schedule[2023]);
-
-  // determine the current year and if it is Fall semester
+function prepareGridOpt() {
   let curT = new Date();
   let curY = curT.getFullYear();
   let curM = curT.getMonth() + 1;
   let curD = curT.getDate();
   let curFullDate = curY + "-" + curM + "-" + curD;
 
+  // start to count current year from the summer
   if (curM <= 6) {
     curY = curY - 1;
   }
 
+  // ag-grid defs
   const columnDefs = [
     {
       headerName: "Class",
@@ -67,8 +50,6 @@ function Schedule() {
     { headerName: "Topic", field: "topic", flex: 2 },
   ];
 
-  const rowData = scheduleData[curY];
-
   // ag-grid styles
   const defaultColDef = {
     flex: 1,
@@ -77,23 +58,17 @@ function Schedule() {
     // cellClass: 'no-border'
   };
 
-  const gridOptions = {
+  const gridOpt = {
     domLayout: "autoHeight",
     columnDefs: columnDefs,
-    // defaultColDef: {
-    //   flex: 1,
-    //   editable: false,
-    //   // suppressNavigable: true,
-    //   // cellClass: 'no-border'
-    // },
 
     suppressCellFocus: true,
     suppressRowClickSelection: true,
     // rowSelection: 'single',
-    rowData: rowData,
+    // rowData: rowData,
     rowClassRules: {
       "current-week": (params) => {
-        // curFullDate = "2023-09-29";
+        // const curFullDate = "2023-10-10";
         let weekDiff = Math.ceil(
           dateDistance(params.data.date, curFullDate) / 7,
         );
@@ -111,6 +86,19 @@ function Schedule() {
     },
   };
 
+  return { curY, gridOpt };
+}
+
+function Schedule() {
+  const [scheduleData] = createResource(async () => {
+    const res = await fetch("/schedule.json");
+    return await res.json();
+  });
+
+  // const scheduleData = useRouteData();
+
+  const { curY, gridOpt } = prepareGridOpt();
+
   // todo: add auto selection of the current week
   return (
     <>
@@ -126,12 +114,13 @@ function Schedule() {
       </div>
 
       <Show
-        when={rowData}
+        when={scheduleData.state == "ready"}
         fallback={<h3>schedule not loaded successfully...</h3>}
       >
         <div dark pb-10 class="ag-theme-material ag-grid">
           <AgGridSolid
-            gridOptions={gridOptions}
+            gridOptions={gridOpt}
+            rowData={scheduleData()[curY]}
             rowSelection={"single"}
           />
         </div>
