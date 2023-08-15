@@ -13,17 +13,18 @@ import scheduleData from "../../schedule.json";
 
 // export async function loadJson(query) {
 //
-//   const response = await fetch("src/schedule.json");
+//   const response = await fetch("src/schedule.json").then(m=>m.default);
 //   const res = await response.json();
 //   const curYr = res[query];
 //
-//   // console.log(curYr);
+//   console.log(curYr);
 //   return curYr;
 // }
 
 function Schedule() {
   // const [rowData] = createResource(2023, loadJson);
-  // console.log(scheduleData);
+  // console.log(rowData);
+
 
   // determine the current year and if it is Fall semester
   let curT = new Date();

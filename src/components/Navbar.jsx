@@ -27,8 +27,8 @@ function Links() {
           linksShown() ? "" : "hidden"
         }`}
       >
-        <A href="/docs/tutorials/_essential">Tutorial</A>
-        <A href="/docs/resources">Resource</A>
+        <A href="/docs/tutorials/rhinoBasic">Tutorial</A>
+        <A href="/docs/resources/ethServer">Resource</A>
         <A href="/news">Assignment</A>
         <A href="/docs/about">About</A>
       </div>
@@ -104,7 +104,7 @@ export function BtnLinks() {
       <div hidden id="docsearch"></div>
 
       {/* <DocsBtn /> */}
-      <Searchbar />
+      {/* <Searchbar /> */}
 
       {Btns.map((x) => (
         <A
@@ -125,9 +125,9 @@ function Searchbar() {
   createEffect(() => {
     // setup algolia docsearch
     docsearch({
-      appId: "BOJS19CH35",
-      apiKey: "c74ee96af1dea95b6e189501983733f8",
-      indexName: "nvchad",
+      appId: "wait-",
+      apiKey: "wait-",
+      indexName: "ddm",
       container: "#docsearch",
     });
 
