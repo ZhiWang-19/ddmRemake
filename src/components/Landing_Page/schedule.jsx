@@ -12,19 +12,20 @@ import "ag-grid-community/styles/ag-theme-material.css";
 import "~/css/table.css";
 import { presetTypography } from "unocss";
 
-export function routeData() {
-  // const [scheduleData] = createResource(async () => {
-  //   const res = await fetch("/schedule.json");
-  //   return await res.json();
-  // });
-  //
-  // return { scheduleData };
 
-  return createRouteData(async () => {
-    const response = await fetch("/schedule.json");
-    return await response.json();
-  });
-}
+// export function routeData() {
+//   const [scheduleData] = createResource(async () => {
+//     const res = await fetch("/schedule.json");
+//     return await res.json();
+//   });
+//
+//   return { scheduleData };
+//
+//   return createRouteData(async () => {
+//     const response = await fetch("/schedule.json");
+//     return await response.json();
+//   });
+// }
 
 function prepareGridOpt() {
   let curT = new Date();
@@ -95,7 +96,7 @@ function Schedule() {
     return await res.json();
   });
 
-  // const scheduleData = useRouteData();
+  // const { scheduleData } = useRouteData();
 
   const { curY, gridOpt } = prepareGridOpt();
 
