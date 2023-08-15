@@ -5,6 +5,8 @@ const sidebar_Items = [
       ["Rhino Basics", "tutorials/rhinoBasic"],
       ["Grasshopper Basics", "tutorials/ghBasic"],
       ["QGIS Basics", "tutorials/qgisBasic"],
+      ["Mixed Reality", "tutorials/_xr"],
+      ["Fabrication", "tutorials/_fab"],
     ],
   },
 
@@ -21,7 +23,6 @@ const sidebar_Items = [
   // ["Debug config", "debugging-config", "i-ri-bug-line"],
   // ["Contributing", "contribute", "i-mdi-github"],
   ["About", "about", "i-line-md:heart"],
-  // ["Credit", "credits", "i-line-md:heart"],
 ];
 
 export default sidebar_Items;

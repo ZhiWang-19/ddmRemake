@@ -11,7 +11,7 @@ The ISG D-Arch host a variety of servers:
 - Software Shop (contains ETH-purchased educational-free softare): [ETH IT-Shop](https://itshop.ethz.ch/)
 
 **Note**: 
-1. *Addresses start with* "\\\\" *should be opened in File Explorer and not accessable by web browser*.
+1. *Addresses start with* "\\\\" *should be opened in File Explorer and may not accessable by web browser*.
 
 1. *For some ETH Servers, access outside ETH network will require an extablished VPN connection.*
 

@@ -164,10 +164,11 @@ function Searchbar() {
 function Navbar() {
   const styles = `
                 flex md:vertCentered gap-5 justify-between 
-                text-lg font-medium  p-4 py-3 max-w-[1700px] mx-auto`;
+                text-lg font-medium p-4 py-3 max-w-[1700px] mx-auto`;
 
   return (
     <nav
+      id = "navbar"
       border="0 b solid slate-2 dark:dark-4"
       sticky
       top-0
