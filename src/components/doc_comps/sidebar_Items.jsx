@@ -19,7 +19,7 @@ const sidebar_Items = [
   },
 
   // ["Tutorials", "tutorial", "i-tabler:server-cog"],
-  ["Resource", "resources", "i-mdi:atom-variant"],
+  // ["Resource", "resources", "i-mdi:atom-variant"],
   // ["Debug config", "debugging-config", "i-ri-bug-line"],
   // ["Contributing", "contribute", "i-mdi-github"],
   ["About", "about", "i-line-md:heart"],
