@@ -1,139 +1,261 @@
-## Rhino Basics
+# Rhino Basics
 
-First of all. The Help tool (you can also press `F1`) in Rhino is very well done
-and very complete. Don't hesitate to use it.
+## Introduction
 
-![01_Capture.png](/ddmImg/Rhino_01_Capture.png)
+**Rhinoceros** (often abbreviated to Rhino) is a commercial 3D computer graphics 
+and computer-aided design (CAD) application software. Rhino is well known for its freeform 
+NURBS (Non-Uniform Rational B-Splines) surface modeling capabilities which offers great flexibility 
+and presicion to handle complex shapes. Rhino also supports a vast array of plugins, allowing it to be tailored to specific industries or design challenges.
+A good example is [Grasshopper](./ghBasic), a popular visual programming language add-on for Rhino 
+that allows for advanced generative and algorithmic design capabilities.
 
-### Interface
+This Rhino tutorial is organized in three sections: first we will introduce the composition of Rhino [window](#window) in detail, 
+then we will dive into logic and model of basic [geometry](#geometry) like curve and surface, 
+and the last part is some commands and model techniques frequently used during [model](#model) process. 
 
-Modeling in 3‑D is the process of creating a mathematical representation of an
-object’s surfaces. The resulting model is displayed on your screen as a
-two-dimensional image. Rhino provides tools for creating, displaying, and
-manipulating these surfaces.
+---
 
-![02_Viewport_Overview.png](/ddmImg/Rhino_02_Viewport_Overview.png)
+## Window
 
-> 1. Viewport (Display different views within the graphics area)
-> 2. Menu Bar (Access commands, options and document properties (e.g. model
->    units))
-> 3. Tool Bar (Basic Modelling tools)
-> 4. Status Bar (Displays options, toggles, coordinates)
-> 5. Panels (Displays specific options such as layers, object properties,
->    cameras etc.)
-> 6. Add Layout (Add set views or layouts to fast navigate btw. viewports)
-> 7. Command Prompt (List of commands and prompts)
+![rhinoWindow.png](/ddmImg/rhinoWindow.png)
+
+> 1. Menu Bar - Access commands, options and document properties (e.g. model units).
+> 2. [Viewports](#viewports) - Display different views and [modes](#display-modes) within the graphics area.
+> 3. [Toolbar](#toolbar) - Lists modelling tools. 
+> 4. [Popup Menu](#popup-menu) - Allows quick access to frequently used commands and tools
+> 5. [Status Bar](#status-bar) - Displays options, toggles and coordinates.
+> 6. [Panels](#panels) - Display specific panels such as layers, object properties, cameras etc.
+> 7. [Command Line and History Window](#command-prompt-and-history-window) - 
+>    Enter commands, get feedback, prompts, and options for the active command.
 
 ### Viewports
 
+Viewports are windows in the graphics area that display views of your model in specific [display modes](#display_modes).
+The standard layout in Rhino is four viewports which shows **perspective, top, front** and **right** view of the model.
+Those viewports can be docked or floating and customized to any rectangular size and shape. The position of viewports is adjustable as well. 
+By double-clicking the viewport title, you can switch between a small viewport and one that fills the graphics area. 
+
 ![Viewport_Toggle](/ddmImg/Rhino_03_Viewport_Toggle.png)
 
-> You can reset the viewport by clicking the “Viewport Toggle" icon
+> The window-like 'Viewport' icon can reset the viewports to default 4-viewports layout, and you can find more layout of
+> vieports in the corresponding flyout toolbar.
 
-Viewports are windows in the graphics area that display views of your model.
-They can be docked or floating. You can customize the viewports and their
-positions to suit your preferences. The size and position of viewports is
-adjustable; they can be any rectangular size and shape. Each viewport has its
-own construction plane and grid that the cursor normally moves on and a
-projection mode. To toggle between a small viewport and one that fills the
-graphics area, double-click the viewport title.
+![rhinoViewports](/ddmImg/rhinoViewports.png)
 
-![Detail Switching the Panels](/ddmImg/Rhino_04_Change_Viewports.png)
-
-> Rightclick on the viewport title to:
+> Right-clicking the viewport title (or clicking the triangle icon besides the title) allows more options on the viewports, which mainly includes:
 >
-> - Change Display Mode
-> - Set View
-> - Set Camera
->
-> _The Standard layout in Rhino is four viewports. Doubleclick on the viewport
-> title, and this >one will become the main panel. Doubleclick again and it will
-> revert to a 4-panel-view. >Viewport tabs can be activated to facilitate
-> navigation through panels. You can also >navigate between the viewports at the
-> bottom left._
+> 1. **Maxmize/Restore the viewport** (Equivalent: `double-click` title)
+> 2. **Change Display Mode** (e.g. Wireframe, Shaded, Rendered, etc.)
+> 3. **Set View** (e.g. Perspective, Two Point Perspective, Isometric, etc.)
+> 4. **Set Camera** 
 
-### Navigation
+#### Display Modes
 
-![Marked Navigation Tool Bar](/ddmImg/Rhino_05_Navigation.png)
-
-> There are several types of navigation tools, which you can find in the toolbar
-> above
-
-Working in 3D on a computer requires visualizing 3D objects drawn on a 2D
-medium - the computer screen. Rhino provides tools to help do this. Rhino’s easy
-view navigation helps you visualize your model. You can look at you model from
-any direction, look at the whole model, or look into the details. You can also
-change your view in the middle of performing a command to see precisely where
-you want to select an object or pick a point.
-
-#### Mouse Navigation
-
-![Mouse Navigation](/ddmImg/Rhino_06_Navigation_Zoom_In.png)
-
-> 1. Pan - In viewports with parallel projections (for example: Top, Front, and
->    Right), drag with the right mouse button. In perspective viewports, hold
->    the Shift key, and drag with the right mouse button.
-> 2. RotateView (Orbit) - In perspective viewports, drag with the right mouse
->    button.
-> 3. Zoom - Hold the Ctrl key, and drag up and down with the right mouse button,
->    or use the mouse wheel.
-
-![Mouse Navigation](/ddmImg/Rhino_07_Navigation_Zoom_In_Extended.png)
-
-> 1. Zoom Extents - Zooms the view to show all objects currently visible.
-> 2. Zoom Selected - Zooms the view to show all selected objects.
-> 3. Undo View - The UndoView command reverses recent view changes.
-> 4. Undo a command - On the Edit menu, click Undo. Or press the “Ctrl + Z”
->    keys.
-> 5. Hide / Show - The Hide command conceals selected objects from view. To show
->    again: Rightclick and “Show Objects”
-> 6. Fly out toolbar - Tools with a little triangle have a flyout toolbar
->    options to complete similar tasks in different ways.
-
-### Display Modes
+Display modes determine how the viewports presents the 2D and 3D geometry, which gives a visual aid for understanding and showing the geometry.
+Some commonly used display modes and their appearance are summarized below. You could also customize your display modes or import them from external sources. 
+More info could be found [here](https://wiki.mcneel.com/rhino/6/advanceddisplay#background). 
 
 ![Mouse Navigation](/ddmImg/Rhino_08_Display_Mode_Toolbar.png)
 
-> You can either change the display mode by toggling the icon above or
-> rightclick the >viewport title.
+> This icon allows swithching between the Wireframe mode and Shaded mode, and there are
+> display modes in the corresponding linked toolbar.
 
-![Mouse Navigation](/ddmImg/Rhino_09_Changing_Displaymode.png)
 ![Mouse Navigation](/ddmImg/Rhino_11_Display_Modes.png)
 
-> You can view your model in a variety of wireframe, shaded and rendered methods
-> that depend >on your needs.
+> Default display modes 
+>
+> Note: Different modes have differnt setting on objects to be displayed. 
+> For example, `Rendered` mode would not show points and curves by default, while `Shaded` mode shows all objects without shadow. Therefore during modelling process, we often use
+> modes like `Wireframe`, `Shaded` and `X-ray`. You can also change and customize the display setting in the `Display` tab of [Panels](#panels).
 
-![Mouse Navigation](/ddmImg/Rhino_10_Changing_Viewportprotection.png)
+---
 
-> The perspective viewport projection can be parallel, three-point perspective,
-> or two-point perspective. The viewport projection is set in Viewport
-> Properties. When no object is selected, the Properties panel shows viewport
-> properties.
+### Toolbar
 
-### Units
+The toolbar serves as a visual collection of tools and commands that 
+allows users to quickly and conveniently access the functionalities they need. 
+Toolbars offer an alternative to using the command line by providing icon-based shortcuts to many of Rhino's functions. 
 
-![Mouse Navigation](/ddmImg/Rhino_12_Acess_Units.png)
+There are several toolbars in the default interface. The horizontal toolbar below the command line is organized by sections and 
+lists all the tools in rhino, including the tools from other plugins; while the vertial one (sidebar) at the left side is linked to 
+standard toolbar group which shows the commonly used tools in Rhino.
 
-> You can access the units properties through the File Menu (File > Properties >
-> Units)
+![rhinoToolPrompt](/ddmImg/rhinoToolPrompt.png)
 
-![Mouse Navigation](/ddmImg/Rhino_13_Document_Properties.PNG)
+> - It is worth noting that the function of most tools can be selected by left-clicking, but there are tools that 
+> offer right-clicking function in addition. 
+> - When the mouse is hovered over the icon, the function tip of this tool will be popped up, 
+> from which you can find out what the function of left click and right click are respectively. 
 
-> As soon as Rhino is launched, you are prompted to choose the units of the
-> model you will be working in. For general landscape modelling we recommend to
-> choose "Meters", for CNC Milling the unti of choice should be "Millimeters".
+#### Flyout Toolbar
 
-### Basic Modeling
+A triangle in the lower right of a toolbar button indicates there are some other tools that have related but different functions. 
+You can clike the triangle and access those tools in the flyout toolbar. 
 
-![Mouse Navigation](/ddmImg/Rhino_14_Commandbar.png)
+![rhinoFlyoutToolbar](/ddmImg/rhinoFlyoutToolbar.png)
 
-> Rhino is a command-driven program. In other words, all actions are activated
-> by named commands.
+> Flyout toolbar of cascade 'visibility' . 
 
-Toolbars contain graphical icons for initiating commands. Many toolbar icons
-have a second command that can be accessed by right-clicking the icon. The
-tooltip that appears when you hover over the icon tells you what the left and
-right mouse button would lead to.
+#### Popup Toolbar
+
+Popup toolbar is the toolbar activated by clicking the default middle-button on your
+mouse, which allows you to access the tools very conveniently. The main benefit of popup toolbar is 
+that you can customize it easily. You can also import or export your popup toolbar for its use on other devices. 
+
+![rhinoPopupToolbar](/ddmImg/rhinoPopupToolbar.png)
+
+> **Adding and deleting tools** - By pressing `ctrl` and `left-click-drag` on any tool from the other toolbars,
+> you can add the tool to the popup toolbar. To delete the tool from toolbar, press `shift` key and `left-click-drag` the icon.
+
+![Pop-up toolbar Setting](/ddmImg/Rhino_25_popupSetting.png)
+
+> In case of error that the toolbar deesn't popup properly, you can check the setting: 
+> `Tools - Options - Mouse - Middle mouse button - Popup this Toolbar` 
+> to select the toolbar you want to popup.
+
+---
+
+### Status Bar
+
+The status bar displays the current coordinate system, the current location, the unit, the current layer, 
+and the status bar panes which include several useful functions.
+
+![rhinoStatusBar](/ddmImg/rhinoStatusBar.png)
+
+> 1. [Osnap Control](#osnap-control)
+> 2. [Status bar panes](#status-bar-panes) 
+
+#### Status Bar Panes
+
+![rhinoStatusPanesCplane](/ddmImg/rhinoStatusPanesCplane.png)
+
+> 1. **Cplane**     - The construction plane/world coordinates toggle.
+> 2. **x/y/z**      - The x/y/z location of mouse cursor.
+> 3. **Unit/Delta** - The current [units](#units) setting. 
+>                     During drawing commands, it displays the distance from last picked point to the current location.
+> 4. **Layer**      - If objects are selected, the pane displays the layer of the selected objects.
+>                     If no objects are selected, the pane displays the current layer.
+
+![rhinoStatusPanes](/ddmImg/rhinoStatusPanes.png)
+
+> 1. **Grid Snap**  - forces the marker to snap on grid intersections.
+> 2. **Ortho**      - restricts cursor movements to the points at a specified angle from
+>                     the last point created. The default angle is 90 degrees. You can
+>                     temporarily turn this off by pressing _shift_.
+> 3. **Planar**     - helps you model objects in the same projected plane by forcing
+>                     input to be on a plane normal to the last point you picked its imagined
+>                     connection to your viewport position.
+> 4. **Osnap**      - constrains the marker to an exact location on an
+>                     object such as the end of a line or the center of a circle. 
+>                     Detail of control options is shown in the following [Osnap Control](#osnap-control) section. 
+> 5. **SmartTrack** - is a system of temporary reference lines and points
+>                     that is drawn in the Rhino viewport.
+> 6. **Gumball**    - displays the gumball widget on a selected
+>                     object facilitating move, scale, and rotate transformations around the gumball origin.
+> 7. **Record History** - records history and updates history-aware objects. With
+>                         history recording and update turned on, e.g. a lofted surface can be
+>                         changed by editing the input curves.
+> 8. **Filter**     - restrict selection to one or more of the filtered types for one selection only.
+
+
+#### Osnap Control
+
+![rhinoStatusOsnap](/ddmImg/rhinoStatusOsnap.png)
+
+> 1. **End**      - snaps to the end of a curve, line etc.
+> 2. **Near**     - snaps onto a curve near the cursor location.
+> 3. **Point**    - snaps to a point object or a control point of a line or curve.
+> 4. **Mid**      - snaps to the midpoint of a curve, line, polyline segment etc.
+> 5. **Cen**      - snaps to the center of a circle, box etc.
+> 6. **Int**      - snaps to the intersection or projected intesection of curves, lines, edges etc.
+> 7. **Perp**     - snaps perpendicular to a curve.
+> 8. **Tan**      - snaps tangent to a curve.
+> 9. **Quad**     - snaps to the point on a curve that is at the maximum x or y point
+>                  relative to the current construction plan.
+> 10. **Knot**    - snaps to a knot on a curve or surface.
+> 11. **Vertex**  - snaps to a mesh vertex. The only option to snap on a **mesh** object.
+> 12. **Project** - projects object snaps from the actual snap point to the construction plane.
+> 13. **Disable** - disables osnap.
+>
+> Graphical explanation of all obeject snaps can be found [here](http://docs.mcneel.com/rhino/6/help/en-us/user_interface/object_snaps.htm). 
+
+---
+
+### Panels
+
+The tabbed panels at the right side of the window contain many useful Rhino controls.
+To open a new panel not yet existing in the sidebar(or closed accidentally), you can go to **_Panels_** in the menu bar
+and select the desired panels. By clicking and draging the tab, you can rearrange the tab's postition or make it a floating window.
+
+![rhinoPanels](/ddmImg/rhinoPanels.png)
+
+> Here is a list of commonly used panels: 
+> 1. **Property**     - manages object properties for the selected objects. For example, you can edit layer, display color and other
+>                       properties in this tab. For example, when designing models for 3D pringting, often a closed model is needed. You can check if the 
+>                       model is a closed entity by looking into the `Type` or the `Details` section in this tab.
+> 2. **Layer**        - helps organizing obejects so you can manipulate them all at once or keep track of them in some way. When objects are on a layer, 
+>                       you can turn them all off at once, change their wireframe display color, and select them all with one selection. 
+>                       More info about layer panel will be introduced below. 
+> 3. **Display**      - controls some of the common properties for the selected display mode, like the background color and transparency.
+> 4. **Layouts**      - manages the layouts in the model.
+> 5. **Named Views**  - manages the named views list to save, restore, and edit named views. 
+
+---
+
+### Command Line and History Window
+
+Typing fullname or shortcuts of commands in command line is another efficient way to access different tools in Rhino besides clicking the tool icon,
+for example, you can try typing `Options` and pressing `enter` or 'spacebar' to confirm the command, then the 'Options' window will be opened. 
+
+The command history window recorded recenlty used commands. Pressing `F2` shows the last 500 command lines from the current Rhino session
+
+![rhinoCommandLine](/ddmImg/rhinoCommandLine.png)
+
+> 1. **Prompts** - When enterting commands, prompts for possible commands will pop up below the command line.
+> 2. **Options** - The command line also displays options and instructions inside a command, taking the command `ExtrudeSrf` for example, 
+>    if you want to have a polysurface without top and bottom surface, clicking the `Solid` option and setting it to `No`.
+>    Therefore, it is always recommended to check info and follow instruction in the command line.
+> 3. To **repeat** the last command, you can press press either `spacebar`, `enter` or `rightclick` (inside viewport). 
+> 4. To cancel commands, just press `ESC`. 
+
+---
+
+### Navigation
+
+Rhino offers multiple ways to navigate inside the viewports and view the model, the easiest way might be using the mouse with 
+the `left button` to select objects and the `scroll wheel` to zoom in and out and the `right button` to rotate the view.If you press `shift` and use
+the `right button`, you can shift the view parallelly.
+There are also some tools in the standard section which are designed for navigation and allow you to navigate just using the left button or the touchpad.
+
+![rhinoNavigation](/ddmImg/rhinoNavigation.png)
+
+> 1. **Pan view** - (Equivalent: `shift` + `right button`) shifts the location of the view cameral and target parallel to the view plane.
+> 2. **Rotate view** - (Equivalent: `shift` + `right button`) rotates the view target around the camera.
+> 3. **Zoom** - (Equivalent: `scroll wheel`) zooms in or out.
+> 4. **Zoom window** - zooms in to selected window. 
+> 5. **Zoom extents** - zooms to show all objects (except hidden objects) in the model. 
+> 6. **Zoom selected** - zooms to selected objects. Useful for cases when you import or paste an object into model but could not find it 
+> because it is far from the current view.
+> 7. **Undo view change** - reverses the recent view changes. Useful for cases when you already set the viewpoint but accidentlly moved it.
+> Note that in this case `ctrl` + `z` does not work.
+
+---
+
+## Geometry
+
+In Rhino, 
+
+### Point
+
+- Tools for modelling points.
+
+### Curve
+
+- Basic explanation of mathmatical representation behind a curve / degress / control point / knots
+- Tools for making curves / lines 
+- Adjusting curves and Rebuild curves
+
+**To be organized**
 
 ![Mouse Navigation](/ddmImg/Rhino_15_Lines.png)
 
@@ -153,59 +275,36 @@ rightclick (on viewport). **To Cancel** stuff, just press ESC_
 > Many commands provide secondary options to allow additional options. By
 > clicking on the (Vertical=No) option it will change to “YES”, allowing you to
 > move your objects only in Z-Axis. These secondary options are also often
-> accessible through the flying toolbar.
+> accessible through the linked toolbar.
 
-### Status Bar
+### Surface
 
-![Mouse Navigation](/ddmImg/Rhino_17_Snap_Options.png)
+- Mathmatical representation of surface
+- Difference between mesh and NURBS surface
+- Tools to model surface
 
-![Mouse Navigation](/ddmImg/Rhino_18_Snap_Options_2.png)
 
-###### Object Snap (OSNAP)
+### Polysurface
 
-![Mouse Navigation](/ddmImg/Rhino_19_Snap_Options_3.png)
+- Brep (representation of polysurface)
+- Tools to model polysurface
 
-> 1. Osnap The object snaps constrain the marker to an exact location on an
->    object such as the end of a line or the center of a circle.
-> 2. End Snap to the end of a curve, line etc.
-> 3. Near Snap onto a curve near the cursor location.
-> 4. Point Snap to a point object or a control point of a line or curve.
-> 5. Mid Snap to the midpoint of a curve, line, polyline segment etc.
-> 6. Cen Snap to the center of a circle, box etc.
-> 7. Int Snap to the intersection or projected intesection of curves, lines,
->    edges etc.
-> 8. Perp Snap perpendicular to a curve.
-> 9. Tan Snap tangent to a curve.
-> 10. Quad Snap to the point on a curve that is at the max. x or y point
->     relative to the current construction plan.
-> 11. Knot Snap to a knot on a curve or surface.
-> 12. Vertex Snap to a mesh vertex. Your only option to snap on a mesh object.
+## Model
 
-###### Other Options
+This section introduces useful tools and commands for modelling.
 
-![Mouse Navigation](/ddmImg/Rhino_20_Other_Options.png)
+### Units
 
-> 1. Grid Snap Forces the Marker to snap on grid intersections.
-> 2. Ortho Restricts cursor movements to the points at a specified angle from
->    the last point created. The default angle is 90 degrees. You can
->    temporarily turn this off by pressing Shift.
-> 3. Planar This helps you model objects in the same projected plane by forcing
->    input to be on a plane normal to the last point you picked its imagined
->    connection to your viewport position.
-> 4. SmartTrack SmartTrack™ is a system of temporary reference lines and points
->    that is drawn in the Rhino viewport.
-> 5. Gumball The Gumball command displays the gumball widget on a selected
->    object facilitating move, scale, and rotate transformations around the
->    gumball origin.
-> 6. Record History Records history and updates history-aware objects. With
->    history recording and update turned on, e.g. a lofted surface can be
->    changed by editing the input curves.
-> 7. Project Osnap By default, 2D geometry is created on the active construction
->    plane. The project constraint ignores object snaps and pushes all the
->    geometry onto the active construction plane.
-> 8. Disable Osnap The DisableOsnap command manages the state of persistent
->    object snaps to temporarily turn off persistent object snaps from the
->    control.
+![Mouse Navigation](/ddmImg/Rhino_12_Acess_Units.png)
+
+> You can access the units properties through the File Menu (File > Properties >
+> Units)
+
+![Mouse Navigation](/ddmImg/Rhino_13_Document_Properties.PNG)
+
+> As soon as Rhino is launched, you are prompted to choose the units of the
+> model you will be working in. For general landscape modelling we recommend to
+> choose "Meters", for CNC Milling the unti of choice should be "Millimeters".
 
 ### Layers
 
@@ -240,6 +339,28 @@ cannot be selected but can be snapped to.
 >
 > -Select Objects on Layer -Change/Copy selected object to layer
 
+### Move and Rotate
+- introduce move / rotate 1d / rotate 3d / gumball 
+
+### Scale and Deform
+- introduce scale 1d/2d/3d
+- introduce moveEdge / moveSurface
+
+### Hide and Show
+- introduce hide/show/swap
+
+### Boolean
+- Introduce Boolean union / difference 
+
+### Trim and Split
+- Introduce trim/untrim/split
+
+### Group and Ungroup 
+- Introduce group and un group 
+
+### Measurement
+- Measure distance / angle / area / volume
+
 ### Layouts
 
 ![Mouse Navigation](/ddmImg/Rhino_23_Acess_Layouts.png)
@@ -264,7 +385,11 @@ properties. These can be changed afterwards again.
 > 2. Go to “Properties” then click on “Detail”
 > 3. Set Scale
 
-### Common Commands
+### Name Views
+
+- Introduce named views
+
+### Other Common Commands
 
 | **Measuring**                  |                                                                                       |
 | ------------------------------ | ------------------------------------------------------------------------------------- |
@@ -346,26 +471,4 @@ Rhino. You can then use the keyboard shortcuts to speeSteps:
 
 4. Confirm with any warning of "overwritten the current aliases".
 
-#### Popup Toolbar
 
-Rhino's native approach to access the short-cut commands is to use the _pop-up
-toolbar_. You can activate it by clicking the default middle-button on your
-mouse (you need to click on the small title bar of the pop-up to make it
-activated as normal menu):
-
-![Pop-up Toolbar](/ddmImg/Rhino_26_popupToolbar.png)
-
-In case of error, you can check the settings:
-
-![Pop-up toolbar Setting](/ddmImg/Rhino_25_popupSetting.png)
-
-By pressing _ctrl_ key and left-click-drag on any icon from the other toolbars,
-you can added the tool to this pop-up toolbar and access it quickly with your
-middle button:
-
-![Add a button to the pop-up toolbar](/ddmImg/Rhino_27_popupAddButtion.png)
-
-You can add more buttons as you become more familiar with the modelling process
-in Rhino and make your personalized popup toolbar. See an example below:
-
-![An example of a customized popup toolbar](/ddmImg/Rhino_28_popupExample.png)
