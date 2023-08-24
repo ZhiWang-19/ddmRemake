@@ -1,9 +1,20 @@
 import Hero from "~/components/Landing_Page/hero";
-// import Schedule from "~/components/Landing_Page/schedule";
 import Footer from "~/components/Landing_Page/footer";
 
-// since ag-grid has no SSR feature, make it client-only
-import { clientOnly } from "~/utils";
+import { createRouteData } from "solid-start";
+import { isServer } from "solid-js/web";
+
+import { clientOnly } from "~/utils"; // since ag-grid has no SSR feature, make it client-only
+
+// create data that can be used later
+export function routeData() {
+  return createRouteData(async () => {
+    if (isServer) return false;
+
+    const response = await fetch("/schedule.json");
+    return await response.json();
+  });
+}
 
 const ClientOnlySchedule = clientOnly(() =>
   import("~/components/Landing_Page/schedule.jsx")
@@ -13,7 +24,6 @@ function Home() {
   return (
     <>
       <Hero />
-      {/* <Schedule /> */}
       <ClientOnlySchedule />
       <Footer />
     </>

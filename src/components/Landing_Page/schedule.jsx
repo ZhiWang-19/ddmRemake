@@ -1,5 +1,11 @@
-import { Component, createResource, createSignal, For } from "solid-js";
-import { createRouteData, useRouteData } from "solid-start";
+import {
+  Component,
+  createResource,
+  createSignal,
+  For,
+  onMount,
+} from "solid-js";
+import { refetchRouteData, useRouteData } from "solid-start";
 
 import { A } from "@solidjs/router";
 
@@ -11,21 +17,6 @@ import "ag-grid-community/styles/ag-theme-material.css";
 
 import "~/css/table.css";
 import { presetTypography } from "unocss";
-
-
-// export function routeData() {
-//   const [scheduleData] = createResource(async () => {
-//     const res = await fetch("/schedule.json");
-//     return await res.json();
-//   });
-//
-//   return { scheduleData };
-//
-//   return createRouteData(async () => {
-//     const response = await fetch("/schedule.json");
-//     return await response.json();
-//   });
-// }
 
 function prepareGridOpt() {
   let curT = new Date();
@@ -91,12 +82,15 @@ function prepareGridOpt() {
 }
 
 function Schedule() {
-  const [scheduleData] = createResource(async () => {
-    const res = await fetch("/schedule.json");
-    return await res.json();
-  });
+  // const [scheduleData] = createResource(async () => {
+  //   const res = await fetch("/schedule.json");
+  //   return await res.json();
+  // });
 
-  // const { scheduleData } = useRouteData();
+  const  scheduleData  = useRouteData();
+  onMount (() => {
+    refetchRouteData();
+  })
 
   const { curY, gridOpt } = prepareGridOpt();
 
@@ -115,13 +109,13 @@ function Schedule() {
       </div>
 
       <Show
-        when={scheduleData.state == "ready"}
+        when={scheduleData.latest}
         fallback={<h3>schedule not loaded successfully...</h3>}
       >
         <div dark pb-10 class="ag-theme-material ag-grid">
           <AgGridSolid
             gridOptions={gridOpt}
-            rowData={scheduleData()[curY]}
+            rowData={scheduleData.latest[curY]}
             rowSelection={"single"}
           />
         </div>
