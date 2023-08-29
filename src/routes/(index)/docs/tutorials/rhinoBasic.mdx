@@ -6,12 +6,12 @@
 and computer-aided design (CAD) application software. Rhino is well known for its freeform 
 NURBS (Non-Uniform Rational B-Splines) surface modeling capabilities which offers great flexibility 
 and presicion to handle complex shapes. Rhino also supports a vast array of plugins, allowing it to be tailored to specific industries or design challenges.
-A good example is [Grasshopper](./ghBasic), a popular visual programming language add-on for Rhino 
+A good example is [Grasshopper](./ghBasic), a node-based visual programming language add-on for Rhino 
 that allows for advanced generative and algorithmic design capabilities.
 
-This Rhino tutorial is organized in three sections: first we will introduce the composition of Rhino [window](#window) in detail, 
-then we will dive into logic and model of basic [geometry](#geometry) like curve and surface, 
-and the last part is some commands and model techniques frequently used during [model](#model) process. 
+This Rhino tutorial is organized in three sections: 1) the composition of Rhino [window](#window) in detail; 
+2) the logic and model of basic [geometry](#geometry) like curve and surface; 
+3) commands and model techniques frequently used during [model](#model) process. 
 
 ---
 
@@ -19,21 +19,22 @@ and the last part is some commands and model techniques frequently used during [
 
 ![rhinoWindow.png](/ddmImg/rhinoWindow.png)
 
-> 1. Menu Bar - Access commands, options and document properties (e.g. model units).
-> 2. [Viewports](#viewports) - Display different views and [modes](#display-modes) within the graphics area.
-> 3. [Toolbar](#toolbar) - Lists modelling tools. 
-> 4. [Popup Menu](#popup-menu) - Allows quick access to frequently used commands and tools
-> 5. [Status Bar](#status-bar) - Displays options, toggles and coordinates.
-> 6. [Panels](#panels) - Display specific panels such as layers, object properties, cameras etc.
-> 7. [Command Line and History Window](#command-prompt-and-history-window) - 
+> 1. **Menu Bar** - Access commands, options and document properties (e.g. model units).
+> 2. [**Viewports**](#viewports) - Display different views and [modes](#display-modes) within the graphics area.
+> 3. [**Toolbar**](#toolbar) - Lists modelling tools. 
+> 4. [**Popup Menu**](#popup-menu) - Allows quick access to frequently used commands and tools
+> 5. [**Status Bar**](#status-bar) - Displays options, toggles and coordinates.
+> 6. [**Panels**](#panels) - Display specific panels such as layers, object properties, cameras etc.
+> 7. [**Command Line and History Window**](#command-prompt-and-history-window) - 
 >    Enter commands, get feedback, prompts, and options for the active command.
 
 ### Viewports
 
-Viewports are windows in the graphics area that display views of your model in specific [display modes](#display_modes).
-The standard layout in Rhino is four viewports which shows **perspective, top, front** and **right** view of the model.
-Those viewports can be docked or floating and customized to any rectangular size and shape. The position of viewports is adjustable as well. 
-By double-clicking the viewport title, you can switch between a small viewport and one that fills the graphics area. 
+Viewports serve as windows within the graphics zone, showcasing various views of your model in distinct [display modes](#display_modes).
+By default, Rhino presents a layout consisting of four viewports. These display the **perspective**, **top**, **front**, and **right** views of your model.
+
+Those viewports can be docked or floating and customized to any rectangular size and shape. The positioning of viewports is also adjustable to one's preference. 
+For a more focused view, simply double-click the viewport title. This action toggles between the standard size and an expanded view that encompasses the entire graphics area. 
 
 ![Viewport_Toggle](/ddmImg/Rhino_03_Viewport_Toggle.png)
 
@@ -57,16 +58,17 @@ More info could be found [here](https://wiki.mcneel.com/rhino/6/advanceddisplay#
 
 ![Mouse Navigation](/ddmImg/Rhino_08_Display_Mode_Toolbar.png)
 
-> This icon allows swithching between the Wireframe mode and Shaded mode, and there are
-> display modes in the corresponding linked toolbar.
+> This icon allows swithching between the Wireframe mode and Shaded mode. 
+> More display modes can be found in the flyout toolbar.
 
 ![Mouse Navigation](/ddmImg/Rhino_11_Display_Modes.png)
 
 > Default display modes 
 >
-> Note: Different modes have differnt setting on objects to be displayed. 
-> For example, `Rendered` mode would not show points and curves by default, while `Shaded` mode shows all objects without shadow. Therefore during modelling process, we often use
-> modes like `Wireframe`, `Shaded` and `X-ray`. You can also change and customize the display setting in the `Display` tab of [Panels](#panels).
+> Note: Each display mode configures objects to appear differently.
+> In the `Rendered` mode, points and curves are typically hidden by default. The `Shaded` mode displays all objects, but shadows are omitted.
+> During the modeling process, modes such as `Wireframe`, `Shaded`, and `X-ray` are often preferred, as they display all objects within the model. 
+> To modify and personalize these settings, navigate to the `Display` tab under the [Panels](#panels) section.
 
 ---
 
@@ -82,19 +84,19 @@ standard toolbar group which shows the commonly used tools in Rhino.
 
 ![rhinoToolPrompt](/ddmImg/rhinoToolPrompt.png)
 
-> - It is worth noting that the function of most tools can be selected by left-clicking, but there are tools that 
-> offer right-clicking function in addition. 
-> - When the mouse is hovered over the icon, the function tip of this tool will be popped up, 
-> from which you can find out what the function of left click and right click are respectively. 
+> **Tool Interactions**: The majority of tools activate with a `left-click`. 
+> However, certain tools have supplementary functionalities accessible via `right-click`.
+> When hovering the mouse over a tool icon, a tooltip emerges detailing its functions. 
+> This tooltip will clarify the distinct actions for both left and right-click interactions.
+ 
 
 #### Flyout Toolbar
 
-A triangle in the lower right of a toolbar button indicates there are some other tools that have related but different functions. 
-You can clike the triangle and access those tools in the flyout toolbar. 
+The clickable small "triangle" in some buttons will extend all tools in the same catalogue.
 
 ![rhinoFlyoutToolbar](/ddmImg/rhinoFlyoutToolbar.png)
 
-> Flyout toolbar of cascade 'visibility' . 
+> Flyout toolbar of cascade `visibility` . 
 
 #### Popup Toolbar
 
@@ -204,10 +206,10 @@ and select the desired panels. By clicking and draging the tab, you can rearrang
 
 ### Command Line and History Window
 
-Typing fullname or shortcuts of commands in command line is another efficient way to access different tools in Rhino besides clicking the tool icon,
-for example, you can try typing `Options` and pressing `enter` or 'spacebar' to confirm the command, then the 'Options' window will be opened. 
+Typing fullname or shortcuts of commands in command line is another efficient way to access tools in Rhino besides clicking the tool icon,
+for example, you can try typing `Options` and pressing `enter` or `spacebar` to confirm the command, then the `Options` window will be opened. 
 
-The command history window recorded recenlty used commands. Pressing `F2` shows the last 500 command lines from the current Rhino session
+Above the command line, the command history window records recenlty used commands. Pressing `F2` shows the last 500 command lines from the current Rhino session.
 
 ![rhinoCommandLine](/ddmImg/rhinoCommandLine.png)
 
@@ -223,7 +225,7 @@ The command history window recorded recenlty used commands. Pressing `F2` shows 
 ### Navigation
 
 Rhino offers multiple ways to navigate inside the viewports and view the model, the easiest way might be using the mouse with 
-the `left button` to select objects and the `scroll wheel` to zoom in and out and the `right button` to rotate the view.If you press `shift` and use
+the `left button` to select objects and the `scroll wheel` to zoom in and out and the `right button` to rotate the view. If you press `shift` and use
 the `right button`, you can shift the view parallelly.
 There are also some tools in the standard section which are designed for navigation and allow you to navigate just using the left button or the touchpad.
 
@@ -240,235 +242,3 @@ There are also some tools in the standard section which are designed for navigat
 > Note that in this case `ctrl` + `z` does not work.
 
 ---
-
-## Geometry
-
-In Rhino, 
-
-### Point
-
-- Tools for modelling points.
-
-### Curve
-
-- Basic explanation of mathmatical representation behind a curve / degress / control point / knots
-- Tools for making curves / lines 
-- Adjusting curves and Rebuild curves
-
-**To be organized**
-
-![Mouse Navigation](/ddmImg/Rhino_15_Lines.png)
-
-> 1. Point(s) - Point objects mark a single point in 3‑D space. They are the
->    simplest objects in Rhino.
-> 2. Line - The Line command draws one line segment.
-> 3. Polyline - The Polyline command draws a series of lines.
-> 4. Curve - The Curve command draws a curve from control points.
-
-_Tips: You can **just start typing**, there is no need to press on the command
-prompt. To confirm the command you can press spacebar or enter or right-click
-You can also **repeat the last command** by press either spacebar, enter or
-rightclick (on viewport). **To Cancel** stuff, just press ESC_
-
-![Mouse Navigation](/ddmImg/Rhino_16_Extended_Options.png)
-
-> Many commands provide secondary options to allow additional options. By
-> clicking on the (Vertical=No) option it will change to “YES”, allowing you to
-> move your objects only in Z-Axis. These secondary options are also often
-> accessible through the linked toolbar.
-
-### Surface
-
-- Mathmatical representation of surface
-- Difference between mesh and NURBS surface
-- Tools to model surface
-
-
-### Polysurface
-
-- Brep (representation of polysurface)
-- Tools to model polysurface
-
-## Model
-
-This section introduces useful tools and commands for modelling.
-
-### Units
-
-![Mouse Navigation](/ddmImg/Rhino_12_Acess_Units.png)
-
-> You can access the units properties through the File Menu (File > Properties >
-> Units)
-
-![Mouse Navigation](/ddmImg/Rhino_13_Document_Properties.PNG)
-
-> As soon as Rhino is launched, you are prompted to choose the units of the
-> model you will be working in. For general landscape modelling we recommend to
-> choose "Meters", for CNC Milling the unti of choice should be "Millimeters".
-
-### Layers
-
-![Mouse Navigation](/ddmImg/Rhino_21_Acess_Layer.png)
-
-> You can access the Layer functions through the Edit Menu (Edit > Layers > Edit
-> Layers) or >from the Tool Bar.
-
-###### Setting up Layers
-
-Layers are a way of grouping objects and applying certain characteristics to all
-objects that have that layer assignment. Layer states include a layer name, the
-color used to display the objects, and the visibility and the possibility to
-lock/unlock all the objects on a layer. Objects are always created on the
-current layer indicated by the little tick. Only one layer can be active at a
-time. Objects may also be copied or moved to other layers later. Objects on
-layers that are off are not visible in the model. Objects on locked layers
-cannot be selected but can be snapped to.
-
-![Mouse Navigation](/ddmImg/Rhino_22_Layer_Settings.png)
-
-> 1. New Layer
-> 2. New Sublayer
-> 3. Change the on/off state
-> 4. Change the locked/unlocked state
-> 5. Change the layer color
-> 6. Set the current layer
->
-> Doubleclick to change the Name
->
-> Rightclick to:
->
-> -Select Objects on Layer -Change/Copy selected object to layer
-
-### Move and Rotate
-- introduce move / rotate 1d / rotate 3d / gumball 
-
-### Scale and Deform
-- introduce scale 1d/2d/3d
-- introduce moveEdge / moveSurface
-
-### Hide and Show
-- introduce hide/show/swap
-
-### Boolean
-- Introduce Boolean union / difference 
-
-### Trim and Split
-- Introduce trim/untrim/split
-
-### Group and Ungroup 
-- Introduce group and un group 
-
-### Measurement
-- Measure distance / angle / area / volume
-
-### Layouts
-
-![Mouse Navigation](/ddmImg/Rhino_23_Acess_Layouts.png)
-
-> Use a layout to arrange the model for the printer. (View > Layout > New
-> Layout)
-
-Viewport to layout To add a new layout to your rhino file either do:
-
-- Viewport Tab: Rightclick on “+” and “New Layout"
-- Via Command prompt: Type: “Layout”
-- Via Menu: View > Layout > New Layout
-
-Properties By selecting “New Layout” a window pops up to define certain layout
-properties. These can be changed afterwards again.
-
-![Mouse Navigation](/ddmImg/Rhino_24_Set_Scale.png)
-
-> Set scale
->
-> 1. Click on the Frame of your View (in the Layout)
-> 2. Go to “Properties” then click on “Detail”
-> 3. Set Scale
-
-### Name Views
-
-- Introduce named views
-
-### Other Common Commands
-
-| **Measuring**                  |                                                                                       |
-| ------------------------------ | ------------------------------------------------------------------------------------- |
-|                                |                                                                                       |
-| Angle                          | Report the angle between two picked or defined lines                                  |
-| Area                           | Report an object’s area                                                               |
-| Distance                       | Report the distance between two picked locations                                      |
-| Volume                         | Report the volume of closed surfaces, polysurfaces, or meshes                         |
-| -                              |                                                                                       |
-| **Organizing**                 |                                                                                       |
-|                                |                                                                                       |
-| Copy                           | Duplicate objects                                                                     |
-| CopyToLayer                    | Copy objects to a layer                                                               |
-| Group                          | Organize objects into a single component                                              |
-| SelAll                         | Select all objects                                                                    |
-| Sel(...)                       | Select several object according to selection parameters (Srf, Curve...)               |
-| SelLast                        | Select the last changed objects                                                       |
-| Text                           | Create annotation text                                                                |
-| -                              |                                                                                       |
-| -                              |                                                                                       |
-| **Linear Elements**            |                                                                                       |
-|                                |                                                                                       |
-| Contour                        | Create a spaced series of planar curves and points through objects                    |
-| Curve                          | Draw a curve from control point locations                                             |
-| DupBorder                      | Create a curve or polyline that copies a surface, polysurface, or mesh border         |
-| ExtractIsocurve                | Duplicate surface isoparametric curves                                                |
-| ExtractWireframe               | Duplicate surface or polysurface edge and isoparametric curves                        |
-| Line                           | Draw a single line segment                                                            |
-| Polyline                       | Draw a multi-segment polyline with options for line and arc segments and close        |
-| TweenCurves                    | Create curves between two open or closed input curves                                 |
-| Point(s)                       | Draw a single (multiple) point object                                                 |
-| -                              |                                                                                       |
-| -                              |                                                                                       |
-| **Editing General**            |                                                                                       |
-|                                |                                                                                       |
-| Explode                        | Break objects down into components                                                    |
-| ExplodeBlock                   | Explode a block including any nested blocks into component objects                    |
-| Join                           | Connect curves, surface edges, or surfaces to form a single object                    |
-| Move                           | Move objects from one location to another                                             |
-| MoveCrv                        | Move a polycurve/polyline segment                                                     |
-| MoveEdge                       | Move a polysurface edge                                                               |
-| MoveFace                       | Move a polysurface face                                                               |
-| Mirror                         | Create a mirror-image copy of objects                                                 |
-| PointsOn                       | Display curve and surface control points                                              |
-| PointsOff                      | Turn off control, edit and solid points display                                       |
-| Rebuild                        | Reconstruct curves, surfaces, and extrusion objects                                   |
-| Rotate                         | Rotate objects around an axis perpendicular to the conststruction plane               |
-| Rotate3D                       | Rotate objects around a 3-D axis                                                      |
-| Scale                          | Change the size of objects uniformly in the x-, y-, and z-directions                  |
-| Scale1D                        | Change the size of objects in one direction                                           |
-| Scale2D                        | Change the size of objects uniformly in two directions                                |
-| Split                          | Divide objects using other objects as cutters                                         |
-| Trim                           | Cut and delete selected portions of an object at the intersection with another object |
-| -                              |                                                                                       |
-| -                              |                                                                                       |
-| **Editing of linear elements** |                                                                                       |
-|                                |                                                                                       |
-| CloseCrv                       | Close open curves                                                                     |
-| Divide                         | Create points along a curve by n-th segments or specified length                      |
-| Extend                         | Lengthen a curve                                                                      |
-| Offset                         | Copy a curve parallel to the original                                                 |
-| Project                        | Project curves/points on a construction plane / surface                               |
-
-### Modelling Tips
-
-#### AutoCAD Alias Import
-
-If you're an expert of AutoCAD, there's a way to import AutoCAD Aliases into
-Rhino. You can then use the keyboard shortcuts to speeSteps:
-
-1. Download the alias file here:
-   [autocad-alias](/files/AutoCAD_alias_for_Rhino.txt)
-
-2. Select from Menu: Tools->Options->Aliases:
-
-   ![Aliases Import Window](/ddmImg/Rhino_17_AutoCAD_Alias.png)
-
-3. Click "Import" and load the downloaded file.
-
-4. Confirm with any warning of "overwritten the current aliases".
-
-
