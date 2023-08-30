@@ -1,6 +1,6 @@
-## Grasshopper Basics
+# Grasshopper Basics
 
-### Introduction
+## Introduction
 
 Welcome to Grasshopper. For designers who are exploring new shapes using
 generative algorithms, Grasshopper® is a graphical algorithm editor that takes
@@ -22,20 +22,27 @@ This tutorial should give you an overview about Grasshopper itself as well as
 the navigation and basic components. Further it shows how the plugin connects
 with Rhino and some important shortcuts for a smoother usage.
 
+---
+
+## Window
+
 ### Launch Grasshopper
 
 Since Rhinoceros3D version 6, Grasshopper is directly included in Rhino as a
-plugin. By typing „Grasshopper“ into the Rhino command prompt the plug-in will
-load automatically and this main Grasshopper window will show up:
+plugin. By typing `Grasshopper` into the Rhino command line, the plug-in will be
+loaded automatically and the main Grasshopper [interface](#interface) will show up:
 
 ![Grasshopper_22_StartGrasshopper.png](/ddmImg/Grasshopper_22_StartGrasshopper.png)
+> Launch command (Alternative: `left-click` the green grasshopper button in the toolbar)
 
-### Interface and workplace
+---
+
+### Interface
 
 ![Grasshopper_m1.png](/ddmImg/Grasshopper_m1.png)
 
-> 1. The main menu bar: The menu is similar to typical Windows menus. Each menu
->    shows more commands to edit the set tings or the canvas itself as well as
+> 1. **Main menu bar**: The menu is similar to typical Windows menus. Each menu
+>    shows more commands to edit the settings or the canvas itself as well as
 >    the shortcuts to these commands.
 > 2. File browser control: By clicking on the file name it opens the dropdown
 >    menu which can be used to switch between different loaded files.
@@ -85,6 +92,23 @@ load automatically and this main Grasshopper window will show up:
 > M) /ddmImgument preview settings\
 > N) Preview mesh quality
 
+
+
+## Components
+
+### How to use Components
+
+Every Component can be added with drag and drop to the canvas or by double
+clicking onto the canvas and typing its name.Alternatively you can also click
+space and start typing the name of your desired component. A lof of components
+are very similar to common commands and functions within Rhino. If you have a
+certain action in mind and know its command for Rhino, try finding the
+corresponding component in Grasshopper.
+
+![Grasshopper_01_Component](/ddmImg/Grasshopper_01_Component.png)
+
+### Components Status
+
 > Objects on the canvas are usually color-coded to provide feedback about their
 > status:
 
@@ -105,18 +129,7 @@ load automatically and this main Grasshopper window will show up:
 > from the component itself or from one of its input/output parameters. We will
 > learn more about component structures in the following chapters.
 
-### How to use Components
-
-Every Component can be added with drag and drop to the canvas or by double
-clicking onto the canvas and typing its name.Alternatively you can also click
-space and start typing the name of your desired component. A lof of components
-are very similar to common commands and functions within Rhino. If you have a
-certain action in mind and know its command for Rhino, try finding the
-corresponding component in Grasshopper.
-
-![Grasshopper_01_Component](/ddmImg/Grasshopper_01_Component.png)
-
-##### Component basics
+### Component Composition
 
 ![Grasshopper_02_ComponentBasic.png](/ddmImg/Grasshopper_02_ComponentBasic.png)
 
@@ -127,14 +140,14 @@ corresponding component in Grasshopper.
 > without connecting an input parameter or component right click on the input
 > not and select "set one [data source]" (or multiple inputs).
 
-##### Zoom-In interface
+#### Zoom-In interface
 
 ![Grasshopper_03_Zoominterface.png](/ddmImg/Grasshopper_03_Zoominterface.png)
 
 > Some components offer additional input nodes if you zoom in. With the plus (+)
 > and minus (-) you can add or remove input nodes from the component if needed.
 
-### Geometry Reference
+## Geometry Reference
 
 Inputs and outputs from Grasshopper can be connected with the workspace inside
 of Rhino. An object from Rhino can be a Grasshopper input but it can also be
