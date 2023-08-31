@@ -140,7 +140,7 @@ Each object performs a specific function, such as creating geometries, transform
 Objects have inputs and outputs that you can connect using wires.
 
 In Grasshopper, there are multiple types of objects, but we'll focus on two primary ones: **parameters** and **components**.
-Parameters are essentially **data containers**. They **store** various kinds of information, such as when we use them to [reference geometries](#geometry-reference) from Rhino.
+Parameters are essentially **data containers**. They **store** various kinds of information, such as when we use them to [reference geometries](#reference-from-rhino) from Rhino.
 On the other hand, components are **actions containers**. They **perform** tasks, like analyzing and deforming geometries. 
 
 ![grasshopperParametersAndComponents](/ddmImg/grasshopperParametersAndComponents.png)
@@ -151,8 +151,8 @@ On the other hand, components are **actions containers**. They **perform** tasks
 
 ### Add Objects
 
-Every Component can be added with draging (or clicking) and dropping to the canvas or by double
-clicking onto the canvas and typing its name. Alternatively you can also click
+Every object can be added with draging (or clicking) and dropping to the canvas or by double
+clicking onto the canvas and typing its name. Alternatively you can click
 `space` and start typing the name of your desired component. A lof of components
 are very similar to common commands and functions within Rhino. If you have a
 certain action in mind and know its command for Rhino, try finding the
@@ -167,8 +167,8 @@ corresponding component in Grasshopper.
 
 Objects on the canvas are usually color-coded to provide feedback about their status: 
 **Grey** indicates neither warnings nor error.
-**Orange** is indicative of a warning. The component is functioning, and there might be outputs, but there's something you should be aware of. 
-**Red** means there's an error. The component cannot complete its task due to some issue with the input data or other conditions.
+**Orange** is indicative of a warning, meaning the component is functioning and there might be outputs, but there's something you should be aware of. 
+**Red** means there's an error, meaning the component cannot complete its task due to some issue with the input data or other conditions.
 
 ![grasshopperObjectsStatus](/ddmImg/grasshopperObjectsStatus.png)
 
@@ -190,16 +190,16 @@ Objects on the canvas are usually color-coded to provide feedback about their st
 ### Component Composition
 
 As a actions container, a component requires inputs to execute tasks and produce the desired output. 
-Typically, a component is structured into three parts: **input nodes** on the left, the component's **name or icon** in the center, and **output nodes** on the right. 
-By linking the output of a parameter or another component to its input, you can supply the necessary data to the component."
+Typically, a component is structured into three parts: **input nodes** on the left, the **component's name or icon** in the center, and **output nodes** on the right. 
+By linking the output of a parameter or another component to its input, you can supply the necessary data to the component.
 
 ![Grasshopper_02_ComponentBasic.png](/ddmImg/Grasshopper_02_ComponentBasic.png)
 
-> **Needed Inputs** - If you hover over the input node of a component for a few moments a window
+> 1. **Needed Inputs** - If you hover over the input node of a component for a few moments a window
 > will pop up, giving you more information about the type of input this component expects. \
 > Note: To directly set the data source for a paramter without connecting output from a parameter or component, you can `right click` on the input
-> not and select `set one [data source]` or `multiple inputs`. \
-> **Output** - similarly, hovering over the output node, you could get more information about the output, like data type and structure. 
+> not and select `set one [data source]` or `set multiple inputs`, see details [below](#reference-from-rhino). 
+> 2. **Output** - similarly, hovering over the output node, you could get more information about the output, like data type and structure. 
 
 #### Zoom-In Interface
 
@@ -210,15 +210,13 @@ By linking the output of a parameter or another component to its input, you can 
 
 --- 
 
-## Geometry in Grasshopper
+## Geometry
 
-### Reference from Rhino
+### Appearance
 
-Inputs and outputs from Grasshopper can be connected with the workspace inside
-of Rhino. An object from Rhino can be a Grasshopper input but it can also be
-generated with Grasshopper and then be used in Rhino. The command to make
-objects from Grasshopper editable in Rhino is called "bake". Right click on a
-component or parameter to get access to the bake command.
+Within Grasshopper, inputs and outputs can be seamlessly integrated with the Rhino workspace. 
+Geometries in Grasshopper can either be [**referenced**](#reference) from objects within Rhino or directly constructed using Grasshopper components. 
+Similarly, you can translate Grasshopper geometries into editable forms in Rhino using the [**bake**](#bake) command.
 
 ![Grasshopper_23_ConnectionRhinoGH.png](/ddmImg/Grasshopper_23_ConnectionRhinoGH.png)
 
@@ -226,8 +224,8 @@ component or parameter to get access to the bake command.
 > spheres in the rhino workspace illustrate their origin through a distinct
 > color coding:
 >
-> 1. The grey one on the left is generated in Rhino with the command "sphere".
->    It is also editable and can interact with other rhino objects.
+> 1. The grey one on the left is generated in Rhino with the command `sphere`.
+>    It is also editable and can interact with other Rhino objects.
 > 2. The red one in the middle is generated with the sphere component from
 >    Grasshopper. The red wireframe indicates an origin from Grasshopper. Red
 >    also means, that the component containing this geometry an Grasshopper is
@@ -235,30 +233,55 @@ component or parameter to get access to the bake command.
 > 3. If you activate the component in Grasshopper it not just turns green in
 >    Grasshopper. The red wireframe in the Rhino viewort turns green as well.
 
-### Geometry Parameters
+---
 
+### Reference from Rhino
+
+In Grasshopper, **parameters** `Point`, `Curve`, `Surface` and `Brep`are normally used to 
+reference **points**, **curves**, **surfaces** and **polysurfaces** in Rhino, respectively. 
+It is worth noting that although there is parameter like `Circle` in grasshopper, 
+you still need to use `curve` instead of `circle` to reference a circle in Rhino.
+One reason is that you can gain more flexibility using `Curve`. 
+You can still derive circle-specific properties from it, like its center point or radius, but you also have the broader range of functionalities available for curves.
+
+**Note on `Brep`**: If you check `Params` tag in Grasshopper, you will notice there is not parameter called `Polysurface`. 
+To represent a polysurface in Rhino, we use `Brep` in Grasshopper. `Brep` stands for boundary representation that describes 3D shapes by delineating their boundaries.
+BREPs provide a very comprehensive representation including the vertices, edges, surfaces of the polysurface. 
+A Brep can be a single surface or a polysurface, meaning you can also use `Brep` to represent surfaces in Rhino.
+
+![grasshopperReference.png](/ddmImg/grasshopperReference.png)
+
+> To reference a geometry (for instance, the sphere depicted in the image) from Rhino, select the sphere in Rhino, 
+> `right-click` on the parameter and choose `Set one Brep`. 
+> If you aim to reference several geometries, opt for `Set Multiple Breps`. 
+> This logic can similarly be applied to the other parameters.
+> 
+> Note: Again, if you want to reference a polysurface, please use `Brep`. 
+> You cannot use `Surface` and `Set Multiple Surfaces` to achieve this. 
+> In other words, a poly surface is not equal to multiple surfaces.
+
+---
 
 ### Bake to Rhino
 
-![Grasshopper_24_Bake.png](/ddmImg/Grasshopper_24_Bake.png)
+Red and green Grasshopper wireframe "holograms" in the Rhino viewport are not
+editable with Rhino and cannot interact with Rhino objects (no snapping etc.).
+To enable editing you can **bake** geometry.
 
-> Red and green Grasshopper wireframe "holograms" in the Rhino viewport are not
-> editable with Rhino and cannot interact with Rhino objects (no snapping etc.).
-> To enable editing you can „bake“ geometry. Simply right click on the output
-> you would like to transfer to rhino and choose "bake".
+![grasshopperBake.png](/ddmImg/grasshopperBake.png)
 
-![Grasshopper_25_Bake.png](/ddmImg/Grasshopper_25_Bake.png)
-
-> A window will show up. Here you can define on which layer you would like to
-> place the geometry on after baking. Click "ok" to bake it.
+> 1. `Right-click` on the output node and select `Bake`.
+> 2. A window will show up. Here you can define on which layer you would like to
+>    place the geometry on after baking. Click `OK` to bake it.
 
 ![Grasshopper_26_Bake.png](/ddmImg/Grasshopper_26_Bake.png)
 
 > Now we have baked the right sphere. Visually and in regard to its behaviour it
-> is now the same as the one we created within Rhino with the "sphere" command
-> (the one on the left).\
-> ATTENTION: After baking the object, it is no longer connected to grasshopper
-> and is not affected by any changes made in Grasshopper.
+> is now the same as the one we created within Rhino with the `sphere` command
+> (the one on the left).
+>
+> Note: After baking the object, it is no longer connected to Grasshopper
+> and therefore is not affected by any changes made in Grasshopper.
 
 ## Data in Grasshopper
 
