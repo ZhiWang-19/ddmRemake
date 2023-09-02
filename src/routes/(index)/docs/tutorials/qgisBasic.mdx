@@ -24,7 +24,7 @@ In this case your download will include four .tif files.
 
 ![QGIS_ZH_GIS](/ddmImg/QGIS_ZH_GIS.jpg)
 > Webpage of [Zurich GIS](https://maps.zh.ch/), you can search for the location like 'Klopstockwiese' in the top left corner, and its below to find the map you need.
-Then you can click on the download button above the map and select the desired area to download. 
+> Then you can click on the download button above the map and select the desired area to download. 
 
 After downloading the different tiles, they have to be unpacked and afterwards
 combined into one consistent raster file. For this step we are only interested
@@ -48,8 +48,7 @@ We need to merge these files before proceeding to the next step.
 
 
 ![QGIS_LoadDOM_DTM_II](/ddmImg/QGIS_CombineIIDOM_DTM_I.jpg)
-> **Step 2**: Select the raster sets you would like to combine by clicking on the three dots
-in the top right corner.
+> **Step 2**: Select the raster sets you would like to combine by clicking on the three dots in the top right corner.
 
 
 ![QGIS_LoadDOM_DTM_III](/ddmImg/QGIS_CombineIIIDOM_DTM_I.jpg)
@@ -59,13 +58,13 @@ in the top right corner.
 
 ### Correcting the Raster Values
 
-After merging, there will be a new layer called **Merged** in the layer panel. 
+After merging, there will be a new layer called **'Merged'** in the layer panel. 
 You might notice that the values of the new file are not the same
 as in the original files (compare the maximum and minimum raster values). This
 inconvenience can be solved by adjusting the layer properties. 
 
 ![QGIS_LayerProperties](/ddmImg/QGIS_LayerProperties.jpg)
-> **Step 1**: Select the merged raster layer, `right-click` on it and navigate to `Properties`.
+> **Step 1**: Select the **'Merged'** raster layer, `right-click` on it and navigate to `Properties`.
 
 ![QGIS_LayerProperties_II](/ddmImg/QGIS_LayerPropertiesII.jpg)
 > **Step 2**: Within the properties window navigate to `Symbology` and expand the `Min / Max
@@ -90,7 +89,7 @@ more computational power is needed in the following steps.
 
 ![QGIS_ClippingLayerNew](/ddmImg/QGIS_ClippingLayerNew.jpg)
 
-> **Step 1**: Select the **merged** layer and go to `Raster > Extraction > Clip Raster by Extent`. 
+> **Step 1**: Select the **'merged'** layer and go to `Raster > Extraction > Clip Raster by Extent`. 
 
 ![QGIS_LayerClipping](/ddmImg/QGIS_ClippingLayer.jpg)
 
@@ -107,9 +106,9 @@ more computational power is needed in the following steps.
 
 ### From Raster to Point
 
-Now you should have a new layer **Clipped(extent)** in the layer panel, 
+Now you should have a new layer **'Clipped(extent)'** in the layer panel, 
 to turn our raster data into a point set which we can import and open in
-Rhinoceros 3D we have to use the Processing Toolbox.
+Rhinoceros 3D, we have to use the **Processing Toolbox**.
 The toolbox offers a wide range of geoprocessing tools and has a surprisingly good search function.
 
 ![QGIS_Toolbox](/ddmImg/QGIS_Toolbox.jpg)
@@ -126,26 +125,23 @@ The toolbox offers a wide range of geoprocessing tools and has a surprisingly go
 > **Step 3**: Click on the three dots in the to right to select the desired
 raster layer for the transformation.
 
-Select the "Clipped (extent)" layer and press okay. (If you have renamed the
-layer your layer setup might look a bit different)
-
 ![QGIS_RasterToPoint](/ddmImg/QGIS_RasterToPointII.jpg)
 
-> **Step 4**: Select the **Clipped (extent)** layer and press okay. 
-> For the "type" field in the following window, choose `(0) nodes` and press `Run`. The calculation might take a while.
+> **Step 4**: Select the **'Clipped (extent)'** layer and press okay. 
+> For the `Type` field in the following window, choose `(0) nodes` and press `Run`. The calculation might take a while.
 
 
 ![QGIS_RasterToPoint](/ddmImg/QGIS_RasterToPointIII.jpg)
 
-> **Step 5**: The result of this calcualtion should be a layer called "Shapes", containing various points.
-> Right-click on the layer **Shapes** and select `Attribute Table`, you can have a look at
+> **Step 5**: The result of this calcualtion should be a layer called **'Shapes'**, containing various points.
+> Right-click on the layer **'Shapes'** and select `Attribute Table`, you can have a look at
 the data of each point like the image shows.
 
 ---
 
 ### Exporting Points as CSV
 
-Now we are ready for exporting. Navigate to the **Shapes** layer, right-click and select `Export > Save Features As`. 
+Now we are ready for exporting. Navigate to the **'Shapes'** layer, right-click and select `Export > Save Features As`. 
 Within the exporting panel perform the following actions:
 
 ![QGIS_RasterToPoint](/ddmImg/QGIS_RasterToPointIIII.jpg)
