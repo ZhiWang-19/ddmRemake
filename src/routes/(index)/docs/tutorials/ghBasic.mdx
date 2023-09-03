@@ -46,7 +46,7 @@ loaded automatically and the main Grasshopper [interface](#interface) will show 
 > 2. **File Browser Control** - shows files you are working on and can be used for switching between files.
 > 3. **Component Panels** - list all component categories.
 > 
->    All components belong to a certain category (such as „Params“ for all primitive data types or „Curves“ for all curve related tools) 
+>    All components belong to a certain category (such as `Params` for all primitive data types or `Curves` for all curve related tools) 
 >    and all categories are available as unique toolbar panels. 
 >    The height and width of the toolbars can be adjusted, allowing for more or fewer on-screen buttons per category.
 >
@@ -89,7 +89,7 @@ loaded automatically and the main Grasshopper [interface](#interface) will show 
 >    Default controls of the sketch tools allow changes of line weight, line type, and color. 
 >    However, it can be quite difficult to draw straight lines or pre-defined shapes. 
 >    In order to solve this problem, draw out any sketch line onto the canvas. 
->    Right click on the line, and select „Load from Rhino“, and select any pre-defined shape in your Rhino scene 
+>    Right click on the line, and select `Load from Rhino`, and select any pre-defined shape in your Rhino scene 
 >    (This can be any 2d shape like a rectangle, circle, star...etc.). 
 >    Once you have selected your referenced shape, hit Enter, and your previously drawn sketch line will be reconfigured to your Rhino reference shape.
 
@@ -151,11 +151,10 @@ On the other hand, components are **actions containers**. They **perform** tasks
 
 ### Add Objects
 
-Every object can be added with draging (or clicking) and dropping to the canvas or by double
-clicking onto the canvas and typing its name. Alternatively you can click
-`space` and start typing the name of your desired component. A lof of components
-are very similar to common commands and functions within Rhino. If you have a
-certain action in mind and know its command for Rhino, try finding the
+Each object can be added to the canvas by a "drag-n-drop" process.
+Alternatively, you can double-click the canvas or press the `spacebar`, and search by its name.
+Many components' names are very similar to common commands and functions within Rhino. 
+If you have a certain action in mind and know its command for Rhino, try finding the
 corresponding component in Grasshopper.
 
 ![Grasshopper_01_Component](/ddmImg/Grasshopper_01_Component.png)
@@ -237,15 +236,15 @@ Similarly, you can translate Grasshopper geometries into editable forms in Rhino
 
 ### Reference from Rhino
 
-In Grasshopper, **parameters** `Point`, `Curve`, `Surface` and `Brep`are normally used to 
+In Grasshopper, **parameters** like `Point`, `Curve`, `Surface` and `Brep`are normally used to 
 reference **points**, **curves**, **surfaces** and **polysurfaces** in Rhino, respectively. 
 It is worth noting that although there is parameter like `Circle` in grasshopper, 
 you still need to use `curve` instead of `circle` to reference a circle in Rhino.
 One reason is that you can gain more flexibility using `Curve`. 
 You can still derive circle-specific properties from it, like its center point or radius, but you also have the broader range of functionalities available for curves.
 
-**Note on `Brep`**: If you check `Params` tag in Grasshopper, you will notice there is not parameter called `Polysurface`. 
-To represent a polysurface in Rhino, we use `Brep` in Grasshopper. `Brep` stands for boundary representation that describes 3D shapes by delineating their boundaries.
+**Note on `Brep`**: If you check `Params` tag in Grasshopper, there is not parameter called `Polysurface`. 
+To represent polysurface(s) in Rhino, we use the `Brep` component in Grasshopper. `Brep` stands for *boundary representation* that describes 3D shapes by delineating their boundaries.
 BREPs provide a very comprehensive representation including the vertices, edges, surfaces of the polysurface. 
 A Brep can be a single surface or a polysurface, meaning you can also use `Brep` to represent surfaces in Rhino.
 
@@ -375,7 +374,7 @@ example:
 
 ![Grasshopper_13GrafandFlatten.png](/ddmImg/Grasshopper_13GrafandFlatten.png)
 
-> Now we can right-click on the output node of the „construct point“ component
+> Now we can right-click on the output node of the "construct point" component
 > and click on graft.
 
 ![Grasshopper_14_GraftandFlatten.png](/ddmImg/Grasshopper_14_GraftandFlatten.png)
@@ -493,3 +492,5 @@ landscape architecture.
 | Ctrl + Q                                        | Hides all selected components from the Rhino view                          |
 | Ctrl + Shift + I                                | Selects all components except the selected ones                            |
 | Ctrl + Shift + drag by holding left             | Drag all connected wires to another component                              |
+
+---
